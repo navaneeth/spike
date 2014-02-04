@@ -12,14 +12,16 @@ func main() {
 		panic("Invalid args")
 	}
 
-	bytes, err := ioutil.ReadFile(os.Args[1])
+	scenarioFile := os.Args[1]
+	bytes, err := ioutil.ReadFile(scenarioFile)
 	if err != nil {
-		panic(err)
+		fmt.Printf("Failed to read: %s. %s\n", scenarioFile, err.Error())
+		os.Exit(1)
 	}
 
 	tokens, err := parse(string(bytes))
 	if se, ok := err.(*syntaxError); ok {
-		fmt.Printf("%s\nat: %d\n", se.message, se.lineNo)
+		fmt.Printf("%s:%d:%d %s\n", scenarioFile, se.lineNo, se.colNo, se.message)
 		os.Exit(1)
 	}
 

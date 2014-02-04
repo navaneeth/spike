@@ -38,6 +38,7 @@ type parser struct {
 // Contains any parsing error
 type syntaxError struct {
 	lineNo  int
+	colNo   int
 	line    string
 	message string
 }
@@ -142,7 +143,6 @@ func canAcceptToken(p *parser, t *token) (bool, error) {
    Arguments are rewrittern as placeholder like {arg0} {arg1} etc
    and argument values will be added to the args array in the resultant token
 */
-// FIXME: handle {arg} coming in the step text. It should fail and user has to escape the text with \{
 func makeWokflowStepToken(p *parser, line string) (*token, error) {
 	const (
 		inDefault = iota
@@ -154,6 +154,10 @@ func makeWokflowStepToken(p *parser, line string) (*token, error) {
 		quotes = '"'
 		escape = '\\'
 	)
+
+	// Using an empty struct as a value here as I don't care about the value
+	// Empty structs won't allocate any space too
+	reservedChars := map[rune]struct{}{'{': {}, '}': {}}
 	var stepText, argText bytes.Buffer
 	var args []string
 	curBuffer := func(state int) *bytes.Buffer {
@@ -166,7 +170,7 @@ func makeWokflowStepToken(p *parser, line string) (*token, error) {
 
 	currentState := inDefault
 	lastState := -1
-	for _, element := range line {
+	for colNo, element := range line {
 		if currentState == inEscape {
 			currentState = lastState
 		} else if element == escape {
@@ -180,6 +184,9 @@ func makeWokflowStepToken(p *parser, line string) (*token, error) {
 			} else {
 				currentState = inExitingQuotes
 			}
+		} else if _, ok := reservedChars[element]; ok {
+			return nil,
+				&syntaxError{lineNo: p.lineNo, line: line, colNo: colNo + 1, message: fmt.Sprintf("'%c' is a reserved character and should be escaped", element)}
 		}
 
 		if currentState == inExitingQuotes {
@@ -197,7 +204,7 @@ func makeWokflowStepToken(p *parser, line string) (*token, error) {
 		return nil, &syntaxError{lineNo: p.lineNo, line: line, message: "String not terminated"}
 	}
 
-	return &token{kind: typeWorkflowStep, lineNo: p.lineNo, value: stepText.String(), args: args}, nil
+	return &token{kind: typeWorkflowStep, lineNo: p.lineNo, value: strings.TrimSpace(stepText.String()), args: args}, nil
 }
 
 func (p *parser) accept(t *token) error {
@@ -229,9 +236,9 @@ func parse(input string) ([]*token, error) {
 
 func (p *parser) run() error {
 	for line, hasLine := p.nextLine(); hasLine; line, hasLine = p.nextLine() {
-		line = strings.Trim(line, " ")
-		if strings.HasPrefix(line, scenarioPrefix) {
-			scenarioName := getNameForTerminalSymbol(line)
+		trimmedLine := strings.TrimSpace(line)
+		if strings.HasPrefix(trimmedLine, scenarioPrefix) {
+			scenarioName := getNameForTerminalSymbol(trimmedLine)
 			if len(scenarioName) == 0 {
 				return &syntaxError{lineNo: p.lineNo, line: line, message: "Scenario should have a name"}
 			}
@@ -240,15 +247,15 @@ func (p *parser) run() error {
 			if err != nil {
 				return err
 			}
-		} else if strings.HasPrefix(line, workflowPrefix) {
-			workflowName := getNameForTerminalSymbol(line)
+		} else if strings.HasPrefix(trimmedLine, workflowPrefix) {
+			workflowName := getNameForTerminalSymbol(trimmedLine)
 			token := &token{kind: typeWorkflow, lineNo: p.lineNo, value: workflowName}
 			err := p.accept(token)
 			if err != nil {
 				return err
 			}
 		} else {
-			if len(line) == 0 {
+			if len(trimmedLine) == 0 {
 				// A new empty line breaks the workflow scope
 				p.exitIfInWorkflow()
 				continue

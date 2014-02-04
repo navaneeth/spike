@@ -23,6 +23,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Printf("%d tokens\n", len(tokens))
+	for _, element := range tokens {
+		fmt.Println(element)
+	}
 
 }

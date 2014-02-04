@@ -3,6 +3,8 @@ package main
 
 import (
 	"bufio"
+	"bytes"
+	"fmt"
 	"strings"
 )
 
@@ -42,6 +44,23 @@ type syntaxError struct {
 
 func (se *syntaxError) Error() string {
 	return se.message
+}
+
+func (t token) String() string {
+	var kind string
+	switch t.kind {
+	case typeScenario:
+		kind = "Scenario"
+		break
+	case typeWorkflow:
+		kind = "Workflow"
+		break
+	case typeWorkflowStep:
+		kind = "WorkflowStep"
+		break
+	}
+
+	return fmt.Sprintf("kind: %s, lineNo: %d, value: %s, args: %v\n", kind, t.lineNo, t.value, t.args)
 }
 
 // Returns the name portion in a terminal symbol.
@@ -106,26 +125,79 @@ func canAcceptWorkflow(p *parser, t *token) (bool, error) {
 	return true, nil
 }
 
-func canAcceptPlainText(p *parser, t *token) (bool, error) {
-	// A plain text in a workflow is a step
-	if p.isInState(typeWorkflow) {
-		return true, nil
-	}
-
-	return false, nil
-}
-
 func canAcceptToken(p *parser, t *token) (bool, error) {
 	switch t.kind {
 	case typeScenario:
 		return canAcceptScenario(p, t)
 	case typeWorkflow:
 		return canAcceptWorkflow(p, t)
-	case typePlainText:
-		return canAcceptPlainText(p, t)
+	case typeWorkflowStep:
+		return true, nil
 	}
 
 	return false, nil
+}
+
+/* Reads the line from left to right, and extracts the arguments
+   Arguments are rewrittern as placeholder like {arg0} {arg1} etc
+   and argument values will be added to the args array in the resultant token
+*/
+// FIXME: handle {arg} coming in the step text. It should fail and user has to escape the text with \{
+func makeWokflowStepToken(p *parser, line string) (*token, error) {
+	const (
+		inDefault = iota
+		inQuotes
+		inExitingQuotes
+		inEscape
+	)
+	const (
+		quotes = '"'
+		escape = '\\'
+	)
+	var stepText, argText bytes.Buffer
+	var args []string
+	curBuffer := func(state int) *bytes.Buffer {
+		if state == inQuotes {
+			return &argText
+		} else {
+			return &stepText
+		}
+	}
+
+	currentState := inDefault
+	lastState := -1
+	for _, element := range line {
+		if currentState == inEscape {
+			currentState = lastState
+		} else if element == escape {
+			lastState = currentState
+			currentState = inEscape
+			continue
+		} else if element == quotes {
+			if currentState == inDefault {
+				currentState = inQuotes
+				continue
+			} else {
+				currentState = inExitingQuotes
+			}
+		}
+
+		if currentState == inExitingQuotes {
+			stepText.WriteString(fmt.Sprintf("{arg%d}", len(args)))
+			args = append(args, argText.String())
+			argText.Reset()
+			currentState = inDefault
+		} else {
+			curBuffer(currentState).WriteRune(element)
+		}
+	}
+
+	// If it is a valid step, the state should be default when the control reaches here
+	if currentState == inQuotes {
+		return nil, &syntaxError{lineNo: p.lineNo, line: line, message: "String not terminated"}
+	}
+
+	return &token{kind: typeWorkflowStep, lineNo: p.lineNo, value: stepText.String(), args: args}, nil
 }
 
 func (p *parser) accept(t *token) error {
@@ -177,13 +249,24 @@ func (p *parser) run() error {
 			}
 		} else {
 			if len(line) == 0 {
+				// A new empty line breaks the workflow scope
 				p.exitIfInWorkflow()
-			} else {
-				token := &token{kind: typePlainText, lineNo: p.lineNo, value: line}
-				err := p.accept(token)
-				if err != nil {
-					return err
-				}
+				continue
+			}
+
+			// We skip all plain text. A plain text inside a workflow is an executable step
+			if !p.isInState(typeWorkflow) {
+				continue
+			}
+
+			token, err := makeWokflowStepToken(p, line)
+			if err != nil {
+				return err
+			}
+
+			err = p.accept(token)
+			if err != nil {
+				return err
 			}
 		}
 	}

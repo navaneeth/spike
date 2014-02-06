@@ -2,10 +2,37 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os"
+	"strings"
 )
+
+const (
+	manifestFile = "manifest.json"
+)
+
+type manifest struct {
+	Language string
+}
+
+func getProjectManifest() *manifest {
+	contents := readFileContents(manifestFile)
+	dec := json.NewDecoder(strings.NewReader(contents))
+
+	var m manifest
+	for {
+		if err := dec.Decode(&m); err == io.EOF {
+			break
+		} else if err != nil {
+			fmt.Printf("Failed to read: %s. %s\n", manifestFile, err.Error())
+			os.Exit(1)
+		}
+	}
+
+	return &m
+}
 
 func main() {
 	if len(os.Args) != 2 {
@@ -13,20 +40,17 @@ func main() {
 	}
 
 	scenarioFile := os.Args[1]
-	bytes, err := ioutil.ReadFile(scenarioFile)
-	if err != nil {
-		fmt.Printf("Failed to read: %s. %s\n", scenarioFile, err.Error())
-		os.Exit(1)
-	}
-
-	tokens, err := parse(string(bytes))
+	tokens, err := parse(readFileContents(scenarioFile))
 	if se, ok := err.(*syntaxError); ok {
 		fmt.Printf("%s:%d:%d %s\n", scenarioFile, se.lineNo, se.colNo, se.message)
 		os.Exit(1)
 	}
 
-	for _, element := range tokens {
-		fmt.Println(element)
+	execution := newExecution(getProjectManifest(), tokens)
+	err = execution.start()
+	if err != nil {
+		fmt.Printf("Execution failed. %s\n", err.Error())
+		os.Exit(1)
 	}
 
 }

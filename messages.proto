@@ -1,0 +1,40 @@
+package main;
+
+message SimpleMessage {
+	enum MessageType {
+	    PING = 0;
+	    PONG = 1;
+	    EXIT = 2;
+	    SUCCESS = 3;
+	}
+  	
+  	required MessageType messageType = 1;
+}
+
+message ExecutionStartingRequest {
+	required string scenarioFile = 1;
+}
+
+message ExecuteStepRequest {
+	required int32 stepId = 1;
+	required string stepText = 2;
+	required bool scenarioFailing = 3;
+	repeated string args = 4;
+}
+
+message ExecuteStepResponse {
+	required int32 stepId = 1;
+	required bool passed = 2;
+	optional bool recoverableError = 3;
+	optional string errorMessage = 4;
+	optional string stackTrace = 5;
+	optional bytes screenShot = 6;
+}
+
+message ExecutionEndingRequest {
+	required string scenarioFile = 7;
+}
+
+message StdOuMessage {
+	required string text = 1;
+}

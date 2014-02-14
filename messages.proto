@@ -1,29 +1,16 @@
 package main;
 
-message SimpleMessage {
-	enum MessageType {
-	    PING = 0;
-	    PONG = 1;
-	    EXIT = 2;
-	    SUCCESS = 3;
-	}
-  	
-  	required MessageType messageType = 1;
-}
-
 message ExecutionStartingRequest {
 	required string scenarioFile = 1;
 }
 
 message ExecuteStepRequest {
-	required int32 stepId = 1;
-	required string stepText = 2;
-	required bool scenarioFailing = 3;
-	repeated string args = 4;
+	required string stepText = 1;
+	optional bool scenarioFailing = 2;
+	repeated string args = 3;
 }
 
 message ExecuteStepResponse {
-	required int32 stepId = 1;
 	required bool passed = 2;
 	optional bool recoverableError = 3;
 	optional string errorMessage = 4;
@@ -35,6 +22,25 @@ message ExecutionEndingRequest {
 	required string scenarioFile = 7;
 }
 
-message StdOuMessage {
-	required string text = 1;
+// This is the message which gets transferred all the time 
+// with proper message type set
+message Message {
+	enum MessageType {
+	    ExecutionStarting = 0;
+	    ExecuteStep = 1;
+	    ExecuteStepResponse = 2;
+	}
+  	
+  	required MessageType messageType = 1;
+  	
+	// A unique id to represent this message. A response to the message should copy over this value
+	// this is used to synchronize messages & responses
+  	required int64 messageId = 2;
+
+  	// One of the following will have a value
+  	optional ExecutionStartingRequest executionStartingRequest = 3;
+  	optional ExecuteStepRequest executeStepRequest = 4;
+  	optional ExecuteStepResponse executeStepResponse = 5;
+  	optional ExecutionEndingRequest executionEndingRequest = 6;
 }
+

@@ -64,10 +64,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Program.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Program.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+            <state line="63" column="70" selection-start="2574" selection-end="2574" vertical-scroll-proportion="0.094339624" vertical-offset="986" max-vertical-offset="1887">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,19 +75,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Messages.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/Messages.java">
+      <file leaf-file-name="ExecuteStepProcessor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ExecuteStepProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="7" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="55875">
+            <state line="6" column="23" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="twist-java.sh" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/twist-java.sh">
+      <file leaf-file-name="ScenarioExecutionStartingProcessor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ScenarioExecutionStartingProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="19" selection-start="29" selection-end="29" vertical-scroll-proportion="0.01718213" vertical-offset="0" max-vertical-offset="873">
+            <state line="5" column="4" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
               <folding />
             </state>
           </provider>
@@ -104,16 +104,19 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/Messages.java" />
-        <option value="$PROJECT_DIR$/src/main/Messages.java" />
-        <option value="$PROJECT_DIR$/src/Program.java" />
         <option value="$PROJECT_DIR$/twist-java.sh" />
+        <option value="$PROJECT_DIR$/src/main/Messages.java" />
+        <option value="$PROJECT_DIR$/src/IMessageProcessor.java" />
+        <option value="$PROJECT_DIR$/src/ScenarioExecutionStartingProcessor.java" />
+        <option value="$PROJECT_DIR$/src/ExecuteStepProcessor.java" />
+        <option value="$PROJECT_DIR$/src/Program.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1680" />
-    <option name="height" value="970" />
+    <option name="width" value="1920" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -212,6 +215,13 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../java-protobuf/out/production/main" />
     <property name="SearchEverywhereHistory" value="" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="true" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Application.Program">
     <configuration default="false" name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -403,7 +413,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="970" extended-state="0" />
+    <frame x="0" y="22" width="1920" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -416,14 +426,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2857143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3407325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3404941" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -454,6 +464,48 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Program.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="0" selection-start="2683" selection-end="2683" vertical-scroll-proportion="0.0" vertical-offset="687" max-vertical-offset="1590">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ScenarioExecutionStartingProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="4" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Program.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="675">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/protobuf/GeneratedMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="55" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="29175" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/protobuf/AbstractMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="32" selection-start="2388" selection-end="2388" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="14040">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twist-java.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="20" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="105" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Program.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="540">
           <folding>
             <element signature="imports" expanded="true" />
@@ -461,18 +513,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Messages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="7" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="58245">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/twist-java.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="29" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="105">
-          <folding />
-        </state>
+        <state line="1" column="29" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="105" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Program.java">
@@ -486,45 +529,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/twist-java.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/protobuf/AbstractMessage.java">
+    <entry file="file://$PROJECT_DIR$/twist-java.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="23" selection-start="2639" selection-end="2639" vertical-scroll-proportion="0.34364262" vertical-offset="0" max-vertical-offset="13485">
-          <folding />
-        </state>
+        <state line="1" column="20" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/protobuf/GeneratedMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="50" selection-start="2643" selection-end="2643" vertical-scroll-proportion="0.2749141" vertical-offset="0" max-vertical-offset="28275">
+        <state line="56" column="55" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="28275" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/protobuf/AbstractMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="32" selection-start="2388" selection-end="2388" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="13485">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/com/sun/corba/se/impl/io/OptionalDataException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="255" selection-end="255" vertical-scroll-proportion="0.12027492" vertical-offset="0" max-vertical-offset="873" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/protobuf/AbstractParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="220" column="49" selection-start="8405" selection-end="8406" vertical-scroll-proportion="0.7628866" vertical-offset="2169" max-vertical-offset="3540" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/protobuf/AbstractMessageLite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="16" selection-start="2507" selection-end="2507" vertical-scroll-proportion="0.33333334" vertical-offset="114" max-vertical-offset="4755">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IMessageProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.08305648" vertical-offset="0" max-vertical-offset="903">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Messages.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="7" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="55875">
+        <state line="25" column="34" selection-start="723" selection-end="723" vertical-scroll-proportion="-11.411961" vertical-offset="10665" max-vertical-offset="63720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ScenarioExecutionStartingProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="4" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ExecuteStepProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="23" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+        <state line="63" column="70" selection-start="2574" selection-end="2574" vertical-scroll-proportion="0.094339624" vertical-offset="986" max-vertical-offset="1887">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twist-java.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="19" selection-start="29" selection-end="29" vertical-scroll-proportion="0.01718213" vertical-offset="0" max-vertical-offset="873">
-          <folding />
         </state>
       </provider>
     </entry>

@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar java/twis-java.jar
+java -jar java/twist-java.jar

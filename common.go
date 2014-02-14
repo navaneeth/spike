@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"time"
 )
 
 func readFileContents(file string) string {
@@ -15,4 +16,8 @@ func readFileContents(file string) string {
 	}
 
 	return string(bytes)
+}
+
+func getUniqueId() int64 {
+	return time.Now().UnixNano()
 }

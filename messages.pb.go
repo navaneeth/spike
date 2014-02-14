@@ -9,11 +9,11 @@ It is generated from these files:
 	messages.proto
 
 It has these top-level messages:
-	SimpleMessage
 	ExecutionStartingRequest
 	ExecuteStepRequest
 	ExecuteStepResponse
 	ExecutionEndingRequest
+	Message
 */
 package main
 
@@ -26,59 +26,40 @@ var _ = proto.Marshal
 var _ = &json.SyntaxError{}
 var _ = math.Inf
 
-type SimpleMessage_MessageType int32
+type Message_MessageType int32
 
 const (
-	SimpleMessage_PING    SimpleMessage_MessageType = 0
-	SimpleMessage_PONG    SimpleMessage_MessageType = 1
-	SimpleMessage_EXIT    SimpleMessage_MessageType = 2
-	SimpleMessage_SUCCESS SimpleMessage_MessageType = 3
+	Message_ExecutionStarting   Message_MessageType = 0
+	Message_ExecuteStep         Message_MessageType = 1
+	Message_ExecuteStepResponse Message_MessageType = 2
 )
 
-var SimpleMessage_MessageType_name = map[int32]string{
-	0: "PING",
-	1: "PONG",
-	2: "EXIT",
-	3: "SUCCESS",
+var Message_MessageType_name = map[int32]string{
+	0: "ExecutionStarting",
+	1: "ExecuteStep",
+	2: "ExecuteStepResponse",
 }
-var SimpleMessage_MessageType_value = map[string]int32{
-	"PING":    0,
-	"PONG":    1,
-	"EXIT":    2,
-	"SUCCESS": 3,
+var Message_MessageType_value = map[string]int32{
+	"ExecutionStarting":   0,
+	"ExecuteStep":         1,
+	"ExecuteStepResponse": 2,
 }
 
-func (x SimpleMessage_MessageType) Enum() *SimpleMessage_MessageType {
-	p := new(SimpleMessage_MessageType)
+func (x Message_MessageType) Enum() *Message_MessageType {
+	p := new(Message_MessageType)
 	*p = x
 	return p
 }
-func (x SimpleMessage_MessageType) String() string {
-	return proto.EnumName(SimpleMessage_MessageType_name, int32(x))
+func (x Message_MessageType) String() string {
+	return proto.EnumName(Message_MessageType_name, int32(x))
 }
-func (x *SimpleMessage_MessageType) UnmarshalJSON(data []byte) error {
-	value, err := proto.UnmarshalJSONEnum(SimpleMessage_MessageType_value, data, "SimpleMessage_MessageType")
+func (x *Message_MessageType) UnmarshalJSON(data []byte) error {
+	value, err := proto.UnmarshalJSONEnum(Message_MessageType_value, data, "Message_MessageType")
 	if err != nil {
 		return err
 	}
-	*x = SimpleMessage_MessageType(value)
+	*x = Message_MessageType(value)
 	return nil
-}
-
-type SimpleMessage struct {
-	MessageType      *SimpleMessage_MessageType `protobuf:"varint,1,req,name=messageType,enum=main.SimpleMessage_MessageType" json:"messageType,omitempty"`
-	XXX_unrecognized []byte                     `json:"-"`
-}
-
-func (m *SimpleMessage) Reset()         { *m = SimpleMessage{} }
-func (m *SimpleMessage) String() string { return proto.CompactTextString(m) }
-func (*SimpleMessage) ProtoMessage()    {}
-
-func (m *SimpleMessage) GetMessageType() SimpleMessage_MessageType {
-	if m != nil && m.MessageType != nil {
-		return *m.MessageType
-	}
-	return SimpleMessage_PING
 }
 
 type ExecutionStartingRequest struct {
@@ -98,23 +79,15 @@ func (m *ExecutionStartingRequest) GetScenarioFile() string {
 }
 
 type ExecuteStepRequest struct {
-	StepId           *int32   `protobuf:"varint,1,req,name=stepId" json:"stepId,omitempty"`
-	StepText         *string  `protobuf:"bytes,2,req,name=stepText" json:"stepText,omitempty"`
-	ScenarioFailing  *bool    `protobuf:"varint,3,req,name=scenarioFailing" json:"scenarioFailing,omitempty"`
-	Args             []string `protobuf:"bytes,4,rep,name=args" json:"args,omitempty"`
+	StepText         *string  `protobuf:"bytes,1,req,name=stepText" json:"stepText,omitempty"`
+	ScenarioFailing  *bool    `protobuf:"varint,2,opt,name=scenarioFailing" json:"scenarioFailing,omitempty"`
+	Args             []string `protobuf:"bytes,3,rep,name=args" json:"args,omitempty"`
 	XXX_unrecognized []byte   `json:"-"`
 }
 
 func (m *ExecuteStepRequest) Reset()         { *m = ExecuteStepRequest{} }
 func (m *ExecuteStepRequest) String() string { return proto.CompactTextString(m) }
 func (*ExecuteStepRequest) ProtoMessage()    {}
-
-func (m *ExecuteStepRequest) GetStepId() int32 {
-	if m != nil && m.StepId != nil {
-		return *m.StepId
-	}
-	return 0
-}
 
 func (m *ExecuteStepRequest) GetStepText() string {
 	if m != nil && m.StepText != nil {
@@ -138,7 +111,6 @@ func (m *ExecuteStepRequest) GetArgs() []string {
 }
 
 type ExecuteStepResponse struct {
-	StepId           *int32  `protobuf:"varint,1,req,name=stepId" json:"stepId,omitempty"`
 	Passed           *bool   `protobuf:"varint,2,req,name=passed" json:"passed,omitempty"`
 	RecoverableError *bool   `protobuf:"varint,3,opt,name=recoverableError" json:"recoverableError,omitempty"`
 	ErrorMessage     *string `protobuf:"bytes,4,opt,name=errorMessage" json:"errorMessage,omitempty"`
@@ -150,13 +122,6 @@ type ExecuteStepResponse struct {
 func (m *ExecuteStepResponse) Reset()         { *m = ExecuteStepResponse{} }
 func (m *ExecuteStepResponse) String() string { return proto.CompactTextString(m) }
 func (*ExecuteStepResponse) ProtoMessage()    {}
-
-func (m *ExecuteStepResponse) GetStepId() int32 {
-	if m != nil && m.StepId != nil {
-		return *m.StepId
-	}
-	return 0
-}
 
 func (m *ExecuteStepResponse) GetPassed() bool {
 	if m != nil && m.Passed != nil {
@@ -209,6 +174,67 @@ func (m *ExecutionEndingRequest) GetScenarioFile() string {
 	return ""
 }
 
+// This is the message which gets transferred all the time
+// with proper message type set
+type Message struct {
+	MessageType *Message_MessageType `protobuf:"varint,1,req,name=messageType,enum=main.Message_MessageType" json:"messageType,omitempty"`
+	// A unique id to represent this message. A response to the message should copy over this value
+	// this is used to synchronize messages & responses
+	MessageId *int64 `protobuf:"varint,2,req,name=messageId" json:"messageId,omitempty"`
+	// One of the following will have a value
+	ExecutionStartingRequest *ExecutionStartingRequest `protobuf:"bytes,3,opt,name=executionStartingRequest" json:"executionStartingRequest,omitempty"`
+	ExecuteStepRequest       *ExecuteStepRequest       `protobuf:"bytes,4,opt,name=executeStepRequest" json:"executeStepRequest,omitempty"`
+	ExecuteStepResponse      *ExecuteStepResponse      `protobuf:"bytes,5,opt,name=executeStepResponse" json:"executeStepResponse,omitempty"`
+	ExecutionEndingRequest   *ExecutionEndingRequest   `protobuf:"bytes,6,opt,name=executionEndingRequest" json:"executionEndingRequest,omitempty"`
+	XXX_unrecognized         []byte                    `json:"-"`
+}
+
+func (m *Message) Reset()         { *m = Message{} }
+func (m *Message) String() string { return proto.CompactTextString(m) }
+func (*Message) ProtoMessage()    {}
+
+func (m *Message) GetMessageType() Message_MessageType {
+	if m != nil && m.MessageType != nil {
+		return *m.MessageType
+	}
+	return Message_ExecutionStarting
+}
+
+func (m *Message) GetMessageId() int64 {
+	if m != nil && m.MessageId != nil {
+		return *m.MessageId
+	}
+	return 0
+}
+
+func (m *Message) GetExecutionStartingRequest() *ExecutionStartingRequest {
+	if m != nil {
+		return m.ExecutionStartingRequest
+	}
+	return nil
+}
+
+func (m *Message) GetExecuteStepRequest() *ExecuteStepRequest {
+	if m != nil {
+		return m.ExecuteStepRequest
+	}
+	return nil
+}
+
+func (m *Message) GetExecuteStepResponse() *ExecuteStepResponse {
+	if m != nil {
+		return m.ExecuteStepResponse
+	}
+	return nil
+}
+
+func (m *Message) GetExecutionEndingRequest() *ExecutionEndingRequest {
+	if m != nil {
+		return m.ExecutionEndingRequest
+	}
+	return nil
+}
+
 func init() {
-	proto.RegisterEnum("main.SimpleMessage_MessageType", SimpleMessage_MessageType_name, SimpleMessage_MessageType_value)
+	proto.RegisterEnum("main.Message_MessageType", Message_MessageType_name, Message_MessageType_value)
 }

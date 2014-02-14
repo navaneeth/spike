@@ -46,7 +46,21 @@ func main() {
 		os.Exit(1)
 	}
 
-	execution := newExecution(getProjectManifest(), tokens)
+	manifest := getProjectManifest()
+
+	_, err = startRunner(manifest)
+	if err != nil {
+		fmt.Printf("Failed to start a runner. %s\n", err.Error())
+		os.Exit(1)
+	}
+
+	conn, err := acceptConnection()
+	if err != nil {
+		fmt.Printf("Failed to get a runner. %s\n", err.Error())
+		os.Exit(1)
+	}
+
+	execution := newExecution(manifest, tokens, conn)
 	err = execution.start()
 	if err != nil {
 		fmt.Printf("Execution failed. %s\n", err.Error())

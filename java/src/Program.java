@@ -1,12 +1,19 @@
 import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.CodedOutputStream;
 import main.Messages;
+import org.reflections.Configuration;
+import org.reflections.Reflections;
+import org.reflections.scanners.MethodAnnotationsScanner;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Set;
 
 import static main.Messages.Message.MessageType;
 import static main.Messages.Message.MessageType.ExecuteStep;
@@ -54,7 +61,6 @@ public class Program {
         stream.write(bytes);
         socket.getOutputStream().write(stream.toByteArray());
         socket.getOutputStream().flush();
-        System.out.println("Runner Wrote " + stream.toByteArray().length);
     }
 
     private static void dispatchMessages(Socket socket, HashMap<MessageType, IMessageProcessor> messageProcessors) throws Exception {
@@ -91,8 +97,25 @@ public class Program {
             put(ExecuteStep, new ExecuteStepProcessor());
         }};
 
+        scanForStepImplementations();
+
         Socket socket = connect();
         dispatchMessages(socket, messageProcessors);
+    }
+
+    private static void scanForStepImplementations() {
+        Configuration config = new ConfigurationBuilder()
+                .setScanners(new MethodAnnotationsScanner())
+                .addUrls(ClasspathHelper.forJavaClassPath());
+        Reflections reflections = new Reflections(config);
+        Set<Method> stepImplementations = reflections.getMethodsAnnotatedWith(Step.class);
+        for (Method method : stepImplementations) {
+            System.out.println(method.getName());
+            Step annotation = method.getAnnotation(Step.class);
+            if (annotation != null) {
+                StepRegistry.addStepImplementation(annotation.value(), method);
+            }
+        }
     }
 
     static class MessageLength {

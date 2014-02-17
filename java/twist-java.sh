@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar java/twist-java.jar
+java -classpath "java/libs/*" Program

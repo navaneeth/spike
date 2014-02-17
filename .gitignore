@@ -22,5 +22,5 @@ _testmain.go
 *.exe
 twist
 
-twist-java.jar
+twistrt.jar
 java/out

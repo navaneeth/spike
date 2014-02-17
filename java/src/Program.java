@@ -53,6 +53,8 @@ public class Program {
         cos.flush();
         stream.write(bytes);
         socket.getOutputStream().write(stream.toByteArray());
+        socket.getOutputStream().flush();
+        System.out.println("Runner Wrote " + stream.toByteArray().length);
     }
 
     private static void dispatchMessages(Socket socket, HashMap<MessageType, IMessageProcessor> messageProcessors) throws Exception {

@@ -17,6 +17,7 @@ import java.util.Set;
 
 import static main.Messages.Message.MessageType;
 import static main.Messages.Message.MessageType.ExecuteStep;
+import static main.Messages.Message.MessageType.ExecutionEnding;
 import static main.Messages.Message.MessageType.ExecutionStarting;
 
 public class Program {
@@ -74,6 +75,10 @@ public class Program {
             } else {
                 Messages.Message response = messageProcessors.get(message.getMessageType()).process(message);
                 writeMessage(socket, response);
+                if (message.getMessageType() == ExecutionEnding) {
+                    socket.close();
+                    break;
+                }
             }
         }
     }
@@ -95,6 +100,7 @@ public class Program {
         HashMap<MessageType, IMessageProcessor> messageProcessors = new HashMap<MessageType, IMessageProcessor>() {{
             put(ExecutionStarting, new ScenarioExecutionStartingProcessor());
             put(ExecuteStep, new ExecuteStepProcessor());
+            put(ExecutionEnding, new ExecutionEndingProcessor());
         }};
 
         scanForStepImplementations();
@@ -110,7 +116,6 @@ public class Program {
         Reflections reflections = new Reflections(config);
         Set<Method> stepImplementations = reflections.getMethodsAnnotatedWith(Step.class);
         for (Method method : stepImplementations) {
-            System.out.println(method.getName());
             Step annotation = method.getAnnotation(Step.class);
             if (annotation != null) {
                 StepRegistry.addStepImplementation(annotation.value(), method);

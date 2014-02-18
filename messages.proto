@@ -19,7 +19,6 @@ message ExecuteStepResponse {
 }
 
 message ExecutionEndingRequest {
-	required string scenarioFile = 7;
 }
 
 // This is the message which gets transferred all the time 
@@ -29,6 +28,7 @@ message Message {
 	    ExecutionStarting = 0;
 	    ExecuteStep = 1;
 	    ExecuteStepResponse = 2;
+	    ExecutionEnding = 3;
 	}
   	
   	required MessageType messageType = 1;

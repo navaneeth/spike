@@ -32,17 +32,20 @@ const (
 	Message_ExecutionStarting   Message_MessageType = 0
 	Message_ExecuteStep         Message_MessageType = 1
 	Message_ExecuteStepResponse Message_MessageType = 2
+	Message_ExecutionEnding     Message_MessageType = 3
 )
 
 var Message_MessageType_name = map[int32]string{
 	0: "ExecutionStarting",
 	1: "ExecuteStep",
 	2: "ExecuteStepResponse",
+	3: "ExecutionEnding",
 }
 var Message_MessageType_value = map[string]int32{
 	"ExecutionStarting":   0,
 	"ExecuteStep":         1,
 	"ExecuteStepResponse": 2,
+	"ExecutionEnding":     3,
 }
 
 func (x Message_MessageType) Enum() *Message_MessageType {
@@ -159,20 +162,12 @@ func (m *ExecuteStepResponse) GetScreenShot() []byte {
 }
 
 type ExecutionEndingRequest struct {
-	ScenarioFile     *string `protobuf:"bytes,7,req,name=scenarioFile" json:"scenarioFile,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	XXX_unrecognized []byte `json:"-"`
 }
 
 func (m *ExecutionEndingRequest) Reset()         { *m = ExecutionEndingRequest{} }
 func (m *ExecutionEndingRequest) String() string { return proto.CompactTextString(m) }
 func (*ExecutionEndingRequest) ProtoMessage()    {}
-
-func (m *ExecutionEndingRequest) GetScenarioFile() string {
-	if m != nil && m.ScenarioFile != nil {
-		return *m.ScenarioFile
-	}
-	return ""
-}
 
 // This is the message which gets transferred all the time
 // with proper message type set

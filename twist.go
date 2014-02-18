@@ -66,5 +66,4 @@ func main() {
 		fmt.Printf("Execution failed. %s\n", err.Error())
 		os.Exit(1)
 	}
-
 }

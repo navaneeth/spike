@@ -2115,21 +2115,6 @@ public final class Messages {
 
   public interface ExecutionEndingRequestOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
-    // required string scenarioFile = 7;
-    /**
-     * <code>required string scenarioFile = 7;</code>
-     */
-    boolean hasScenarioFile();
-    /**
-     * <code>required string scenarioFile = 7;</code>
-     */
-    java.lang.String getScenarioFile();
-    /**
-     * <code>required string scenarioFile = 7;</code>
-     */
-    com.google.protobuf.ByteString
-        getScenarioFileBytes();
   }
   /**
    * Protobuf type {@code main.ExecutionEndingRequest}
@@ -2164,7 +2149,6 @@ public final class Messages {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2180,11 +2164,6 @@ public final class Messages {
                                      extensionRegistry, tag)) {
                 done = true;
               }
-              break;
-            }
-            case 58: {
-              bitField0_ |= 0x00000001;
-              scenarioFile_ = input.readBytes();
               break;
             }
           }
@@ -2226,62 +2205,13 @@ public final class Messages {
       return PARSER;
     }
 
-    private int bitField0_;
-    // required string scenarioFile = 7;
-    public static final int SCENARIOFILE_FIELD_NUMBER = 7;
-    private java.lang.Object scenarioFile_;
-    /**
-     * <code>required string scenarioFile = 7;</code>
-     */
-    public boolean hasScenarioFile() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required string scenarioFile = 7;</code>
-     */
-    public java.lang.String getScenarioFile() {
-      java.lang.Object ref = scenarioFile_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          scenarioFile_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string scenarioFile = 7;</code>
-     */
-    public com.google.protobuf.ByteString
-        getScenarioFileBytes() {
-      java.lang.Object ref = scenarioFile_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        scenarioFile_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private void initFields() {
-      scenarioFile_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasScenarioFile()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2289,9 +2219,6 @@ public final class Messages {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(7, getScenarioFileBytes());
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2301,10 +2228,6 @@ public final class Messages {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, getScenarioFileBytes());
-      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -2421,8 +2344,6 @@ public final class Messages {
 
       public Builder clear() {
         super.clear();
-        scenarioFile_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -2449,13 +2370,6 @@ public final class Messages {
 
       public main.Messages.ExecutionEndingRequest buildPartial() {
         main.Messages.ExecutionEndingRequest result = new main.Messages.ExecutionEndingRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.scenarioFile_ = scenarioFile_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2471,20 +2385,11 @@ public final class Messages {
 
       public Builder mergeFrom(main.Messages.ExecutionEndingRequest other) {
         if (other == main.Messages.ExecutionEndingRequest.getDefaultInstance()) return this;
-        if (other.hasScenarioFile()) {
-          bitField0_ |= 0x00000001;
-          scenarioFile_ = other.scenarioFile_;
-          onChanged();
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasScenarioFile()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -2503,81 +2408,6 @@ public final class Messages {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-      private int bitField0_;
-
-      // required string scenarioFile = 7;
-      private java.lang.Object scenarioFile_ = "";
-      /**
-       * <code>required string scenarioFile = 7;</code>
-       */
-      public boolean hasScenarioFile() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required string scenarioFile = 7;</code>
-       */
-      public java.lang.String getScenarioFile() {
-        java.lang.Object ref = scenarioFile_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          scenarioFile_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string scenarioFile = 7;</code>
-       */
-      public com.google.protobuf.ByteString
-          getScenarioFileBytes() {
-        java.lang.Object ref = scenarioFile_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          scenarioFile_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string scenarioFile = 7;</code>
-       */
-      public Builder setScenarioFile(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        scenarioFile_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string scenarioFile = 7;</code>
-       */
-      public Builder clearScenarioFile() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        scenarioFile_ = getDefaultInstance().getScenarioFile();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string scenarioFile = 7;</code>
-       */
-      public Builder setScenarioFileBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        scenarioFile_ = value;
-        onChanged();
         return this;
       }
 
@@ -2873,6 +2703,10 @@ public final class Messages {
        * <code>ExecuteStepResponse = 2;</code>
        */
       ExecuteStepResponse(2, 2),
+      /**
+       * <code>ExecutionEnding = 3;</code>
+       */
+      ExecutionEnding(3, 3),
       ;
 
       /**
@@ -2887,6 +2721,10 @@ public final class Messages {
        * <code>ExecuteStepResponse = 2;</code>
        */
       public static final int ExecuteStepResponse_VALUE = 2;
+      /**
+       * <code>ExecutionEnding = 3;</code>
+       */
+      public static final int ExecutionEnding_VALUE = 3;
 
 
       public final int getNumber() { return value; }
@@ -2896,6 +2734,7 @@ public final class Messages {
           case 0: return ExecutionStarting;
           case 1: return ExecuteStep;
           case 2: return ExecuteStepResponse;
+          case 3: return ExecutionEnding;
           default: return null;
         }
       }
@@ -3125,12 +2964,6 @@ public final class Messages {
       }
       if (hasExecuteStepResponse()) {
         if (!getExecuteStepResponse().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasExecutionEndingRequest()) {
-        if (!getExecutionEndingRequest().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -3475,12 +3308,6 @@ public final class Messages {
         }
         if (hasExecuteStepResponse()) {
           if (!getExecuteStepResponse().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasExecutionEndingRequest()) {
-          if (!getExecutionEndingRequest().isInitialized()) {
             
             return false;
           }
@@ -4151,19 +3978,19 @@ public final class Messages {
       "arioFailing\030\002 \001(\010\022\014\n\004args\030\003 \003(\t\"}\n\023Execu" +
       "teStepResponse\022\016\n\006passed\030\002 \002(\010\022\030\n\020recove" +
       "rableError\030\003 \001(\010\022\024\n\014errorMessage\030\004 \001(\t\022\022" +
-      "\n\nstackTrace\030\005 \001(\t\022\022\n\nscreenShot\030\006 \001(\014\"." +
-      "\n\026ExecutionEndingRequest\022\024\n\014scenarioFile" +
-      "\030\007 \002(\t\"\212\003\n\007Message\022.\n\013messageType\030\001 \002(\0162" +
-      "\031.main.Message.MessageType\022\021\n\tmessageId\030",
-      "\002 \002(\003\022@\n\030executionStartingRequest\030\003 \001(\0132" +
-      "\036.main.ExecutionStartingRequest\0224\n\022execu" +
-      "teStepRequest\030\004 \001(\0132\030.main.ExecuteStepRe" +
-      "quest\0226\n\023executeStepResponse\030\005 \001(\0132\031.mai" +
-      "n.ExecuteStepResponse\022<\n\026executionEnding" +
-      "Request\030\006 \001(\0132\034.main.ExecutionEndingRequ" +
-      "est\"N\n\013MessageType\022\025\n\021ExecutionStarting\020" +
-      "\000\022\017\n\013ExecuteStep\020\001\022\027\n\023ExecuteStepRespons" +
-      "e\020\002"
+      "\n\nstackTrace\030\005 \001(\t\022\022\n\nscreenShot\030\006 \001(\014\"\030" +
+      "\n\026ExecutionEndingRequest\"\237\003\n\007Message\022.\n\013" +
+      "messageType\030\001 \002(\0162\031.main.Message.Message" +
+      "Type\022\021\n\tmessageId\030\002 \002(\003\022@\n\030executionStar",
+      "tingRequest\030\003 \001(\0132\036.main.ExecutionStarti" +
+      "ngRequest\0224\n\022executeStepRequest\030\004 \001(\0132\030." +
+      "main.ExecuteStepRequest\0226\n\023executeStepRe" +
+      "sponse\030\005 \001(\0132\031.main.ExecuteStepResponse\022" +
+      "<\n\026executionEndingRequest\030\006 \001(\0132\034.main.E" +
+      "xecutionEndingRequest\"c\n\013MessageType\022\025\n\021" +
+      "ExecutionStarting\020\000\022\017\n\013ExecuteStep\020\001\022\027\n\023" +
+      "ExecuteStepResponse\020\002\022\023\n\017ExecutionEnding" +
+      "\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4193,7 +4020,7 @@ public final class Messages {
           internal_static_main_ExecutionEndingRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_main_ExecutionEndingRequest_descriptor,
-              new java.lang.String[] { "ScenarioFile", });
+              new java.lang.String[] { });
           internal_static_main_Message_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_main_Message_fieldAccessorTable = new

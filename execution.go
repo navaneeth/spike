@@ -43,6 +43,18 @@ func (e *execution) startStepExecution(token *token) error {
 	return nil
 }
 
+func (e *execution) stopScenarioExecution() error {
+	message := &Message{MessageType: Message_ExecutionEnding.Enum(),
+		ExecutionEndingRequest: &ExecutionEndingRequest{}}
+
+	_, err := getResponse(e.connection, message)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (e *execution) start() error {
 	for _, token := range e.tokens {
 		var err error
@@ -61,5 +73,5 @@ func (e *execution) start() error {
 		}
 	}
 
-	return nil
+	return e.stopScenarioExecution()
 }

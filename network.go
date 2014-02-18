@@ -29,8 +29,6 @@ func handleConnection(conn net.Conn) {
 			log.Println(err.Error())
 		}
 
-		log.Printf("Read %d bytes\n", n)
-
 		buffer.Write(data[0:n])
 
 		messageLength, bytesRead := proto.DecodeVarint(buffer.Bytes())
@@ -40,8 +38,6 @@ func handleConnection(conn net.Conn) {
 			if err != nil {
 				log.Printf("Failed to read proto message: %s\n", err.Error())
 			} else {
-				log.Println("Got a response")
-				log.Printf("Message id is : %d\n", message.GetMessageId())
 				responseChannel := pendingRequests[*message.MessageId]
 				responseChannel <- message
 				delete(pendingRequests, *message.MessageId)
@@ -50,13 +46,8 @@ func handleConnection(conn net.Conn) {
 				remaining.Write(buffer.Bytes()[messageLength+1:])
 				buffer.Reset()
 				buffer.Write(remaining.Bytes())
-				log.Printf("Buffer size after getting the first response %d\n", buffer.Len())
 			}
 		}
-
-		log.Printf("Message length is %d\n", messageLength)
-		log.Printf("Bytes read is %d\n", bytesRead)
-
 	}
 }
 
@@ -100,7 +91,6 @@ func getResponse(conn net.Conn, message *Message) (*Message, error) {
 
 	select {
 	case response := <-responseChan:
-		log.Println("Got a response from channel")
 		return response, nil
 	}
 }

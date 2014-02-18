@@ -24,7 +24,8 @@ const (
 type token struct {
 	kind   int
 	lineNo int
-	value  string
+	value  string // processed value
+	line   string // as appeared to the parser
 	args   []string
 }
 
@@ -204,7 +205,7 @@ func makeWokflowStepToken(p *parser, line string) (*token, error) {
 		return nil, &syntaxError{lineNo: p.lineNo, line: line, message: "String not terminated"}
 	}
 
-	return &token{kind: typeWorkflowStep, lineNo: p.lineNo, value: strings.TrimSpace(stepText.String()), args: args}, nil
+	return &token{kind: typeWorkflowStep, lineNo: p.lineNo, line: line, value: strings.TrimSpace(stepText.String()), args: args}, nil
 }
 
 func (p *parser) accept(t *token) error {
@@ -242,14 +243,14 @@ func (p *parser) run() error {
 			if len(scenarioName) == 0 {
 				return &syntaxError{lineNo: p.lineNo, line: line, message: "Scenario should have a name"}
 			}
-			token := &token{kind: typeScenario, lineNo: p.lineNo, value: scenarioName}
+			token := &token{kind: typeScenario, lineNo: p.lineNo, line: line, value: scenarioName}
 			err := p.accept(token)
 			if err != nil {
 				return err
 			}
 		} else if strings.HasPrefix(trimmedLine, workflowPrefix) {
 			workflowName := getNameForTerminalSymbol(trimmedLine)
-			token := &token{kind: typeWorkflow, lineNo: p.lineNo, value: workflowName}
+			token := &token{kind: typeWorkflow, lineNo: p.lineNo, line: line, value: workflowName}
 			err := p.accept(token)
 			if err != nil {
 				return err

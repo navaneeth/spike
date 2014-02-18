@@ -17,7 +17,7 @@ const (
 var pendingRequests = make(map[int64]chan<- *Message)
 
 func handleConnection(conn net.Conn) {
-	var buffer, remaining bytes.Buffer
+	buffer := new(bytes.Buffer)
 	data := make([]byte, 8192)
 	for {
 		n, err := conn.Read(data)
@@ -34,18 +34,14 @@ func handleConnection(conn net.Conn) {
 		messageLength, bytesRead := proto.DecodeVarint(buffer.Bytes())
 		if messageLength <= uint64(buffer.Len()) {
 			message := &Message{}
-			err = proto.Unmarshal(buffer.Bytes()[bytesRead:messageLength+1], message)
+			err = proto.Unmarshal(buffer.Bytes()[bytesRead:messageLength+uint64(bytesRead)], message)
 			if err != nil {
 				log.Printf("Failed to read proto message: %s\n", err.Error())
 			} else {
 				responseChannel := pendingRequests[*message.MessageId]
 				responseChannel <- message
 				delete(pendingRequests, *message.MessageId)
-
-				remaining.Reset()
-				remaining.Write(buffer.Bytes()[messageLength+1:])
 				buffer.Reset()
-				buffer.Write(remaining.Bytes())
 			}
 		}
 	}

@@ -64,10 +64,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Program.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Program.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="22" selection-start="3572" selection-end="3572" vertical-scroll-proportion="0.6024363" vertical-offset="986" max-vertical-offset="2397">
+            <state line="115" column="39" selection-start="4473" selection-end="4473" vertical-scroll-proportion="-32.423077" vertical-offset="1112" max-vertical-offset="2397">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,9 +79,7 @@
         <entry file="file://$PROJECT_DIR$/src/Step.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="6" column="35" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,10 +87,10 @@
       <file leaf-file-name="ExecuteStepProcessor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ExecuteStepProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="13" selection-start="806" selection-end="806" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+            <state line="58" column="44" selection-start="2377" selection-end="2377" vertical-scroll-proportion="0.0" vertical-offset="321" max-vertical-offset="1445">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#271#287#0" expanded="true" />
+                <element signature="e#515#531#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,7 +108,7 @@
       <file leaf-file-name="StepRegistry.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StepRegistry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+            <state line="20" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#183#199#0" expanded="true" />
@@ -119,19 +117,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScenarioExecutionStartingProcessor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ScenarioExecutionStartingProcessor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StepImplementation.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="StepImplementation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/StepImplementation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="12" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+            <state line="18" column="0" selection-start="486" selection-end="486" vertical-scroll-proportion="0.34891677" vertical-offset="0" max-vertical-offset="877">
               <folding />
             </state>
           </provider>
@@ -151,14 +140,14 @@
         <option value="$PROJECT_DIR$/twist-java.sh" />
         <option value="$PROJECT_DIR$/src/main/Messages.java" />
         <option value="$PROJECT_DIR$/src/IMessageProcessor.java" />
-        <option value="$PROJECT_DIR$/src/ScenarioExecutionStartingProcessor.java" />
         <option value="$PROJECT_DIR$/src/Step.java" />
         <option value="$PROJECT_DIR$/src/StepRegistry.java" />
         <option value="$PROJECT_DIR$/src/TypeConverter.java" />
-        <option value="$PROJECT_DIR$/src/ExecuteStepProcessor.java" />
-        <option value="$PROJECT_DIR$/src/ExecutionEndingProcessor.java" />
         <option value="$PROJECT_DIR$/src/Program.java" />
+        <option value="$PROJECT_DIR$/src/ExecutionEndingProcessor.java" />
+        <option value="$PROJECT_DIR$/src/ScenarioExecutionStartingProcessor.java" />
         <option value="$PROJECT_DIR$/src/StepImplementation.java" />
+        <option value="$PROJECT_DIR$/src/ExecuteStepProcessor.java" />
       </list>
     </option>
   </component>
@@ -201,6 +190,80 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="twist-java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.6 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="twist-java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.6 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="twist-java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.6 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="twist-java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.6 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -674,26 +737,7 @@
     <entry file="file://$PROJECT_DIR$/src/Step.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="35" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ScenarioExecutionStartingProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StepRegistry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="567">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#183#199#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -704,36 +748,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ExecuteStepProcessor.java">
+    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/lang/RuntimeException.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="13" selection-start="806" selection-end="806" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#271#287#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ExecutionEndingProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="22" selection-start="241" selection-end="241" vertical-scroll-proportion="0.13631158" vertical-offset="0" max-vertical-offset="873">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StepImplementation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="12" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+        <state line="11" column="11" selection-start="330" selection-end="330" vertical-scroll-proportion="0.18826135" vertical-offset="0" max-vertical-offset="903">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="22" selection-start="3572" selection-end="3572" vertical-scroll-proportion="0.6024363" vertical-offset="986" max-vertical-offset="2397">
+        <state line="115" column="39" selection-start="4473" selection-end="4473" vertical-scroll-proportion="-32.423077" vertical-offset="1112" max-vertical-offset="2397">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ExecutionEndingProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="204" selection-end="204" vertical-scroll-proportion="0.18826135" vertical-offset="0" max-vertical-offset="903">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ScenarioExecutionStartingProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="63" selection-start="179" selection-end="179" vertical-scroll-proportion="0.07530454" vertical-offset="0" max-vertical-offset="903">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StepRegistry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#183#199#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ExecuteStepProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="44" selection-start="2377" selection-end="2377" vertical-scroll-proportion="0.0" vertical-offset="321" max-vertical-offset="1445">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#515#531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StepImplementation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="486" selection-end="486" vertical-scroll-proportion="0.34891677" vertical-offset="0" max-vertical-offset="877">
+          <folding />
         </state>
       </provider>
     </entry>

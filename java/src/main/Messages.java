@@ -2113,6 +2113,889 @@ public final class Messages {
     // @@protoc_insertion_point(class_scope:main.ExecuteStepResponse)
   }
 
+  public interface StepValidateRequestOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string stepText = 1;
+    /**
+     * <code>required string stepText = 1;</code>
+     */
+    boolean hasStepText();
+    /**
+     * <code>required string stepText = 1;</code>
+     */
+    java.lang.String getStepText();
+    /**
+     * <code>required string stepText = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getStepTextBytes();
+  }
+  /**
+   * Protobuf type {@code main.StepValidateRequest}
+   */
+  public static final class StepValidateRequest extends
+      com.google.protobuf.GeneratedMessage
+      implements StepValidateRequestOrBuilder {
+    // Use StepValidateRequest.newBuilder() to construct.
+    private StepValidateRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private StepValidateRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final StepValidateRequest defaultInstance;
+    public static StepValidateRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public StepValidateRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private StepValidateRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              stepText_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return main.Messages.internal_static_main_StepValidateRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return main.Messages.internal_static_main_StepValidateRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              main.Messages.StepValidateRequest.class, main.Messages.StepValidateRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<StepValidateRequest> PARSER =
+        new com.google.protobuf.AbstractParser<StepValidateRequest>() {
+      public StepValidateRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new StepValidateRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<StepValidateRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string stepText = 1;
+    public static final int STEPTEXT_FIELD_NUMBER = 1;
+    private java.lang.Object stepText_;
+    /**
+     * <code>required string stepText = 1;</code>
+     */
+    public boolean hasStepText() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string stepText = 1;</code>
+     */
+    public java.lang.String getStepText() {
+      java.lang.Object ref = stepText_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          stepText_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string stepText = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStepTextBytes() {
+      java.lang.Object ref = stepText_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        stepText_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      stepText_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasStepText()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getStepTextBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getStepTextBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static main.Messages.StepValidateRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static main.Messages.StepValidateRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static main.Messages.StepValidateRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static main.Messages.StepValidateRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static main.Messages.StepValidateRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static main.Messages.StepValidateRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static main.Messages.StepValidateRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static main.Messages.StepValidateRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static main.Messages.StepValidateRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static main.Messages.StepValidateRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(main.Messages.StepValidateRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code main.StepValidateRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements main.Messages.StepValidateRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return main.Messages.internal_static_main_StepValidateRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return main.Messages.internal_static_main_StepValidateRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                main.Messages.StepValidateRequest.class, main.Messages.StepValidateRequest.Builder.class);
+      }
+
+      // Construct using main.Messages.StepValidateRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        stepText_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return main.Messages.internal_static_main_StepValidateRequest_descriptor;
+      }
+
+      public main.Messages.StepValidateRequest getDefaultInstanceForType() {
+        return main.Messages.StepValidateRequest.getDefaultInstance();
+      }
+
+      public main.Messages.StepValidateRequest build() {
+        main.Messages.StepValidateRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public main.Messages.StepValidateRequest buildPartial() {
+        main.Messages.StepValidateRequest result = new main.Messages.StepValidateRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.stepText_ = stepText_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof main.Messages.StepValidateRequest) {
+          return mergeFrom((main.Messages.StepValidateRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(main.Messages.StepValidateRequest other) {
+        if (other == main.Messages.StepValidateRequest.getDefaultInstance()) return this;
+        if (other.hasStepText()) {
+          bitField0_ |= 0x00000001;
+          stepText_ = other.stepText_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasStepText()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        main.Messages.StepValidateRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (main.Messages.StepValidateRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string stepText = 1;
+      private java.lang.Object stepText_ = "";
+      /**
+       * <code>required string stepText = 1;</code>
+       */
+      public boolean hasStepText() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string stepText = 1;</code>
+       */
+      public java.lang.String getStepText() {
+        java.lang.Object ref = stepText_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          stepText_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string stepText = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStepTextBytes() {
+        java.lang.Object ref = stepText_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          stepText_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string stepText = 1;</code>
+       */
+      public Builder setStepText(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        stepText_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string stepText = 1;</code>
+       */
+      public Builder clearStepText() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        stepText_ = getDefaultInstance().getStepText();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string stepText = 1;</code>
+       */
+      public Builder setStepTextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        stepText_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:main.StepValidateRequest)
+    }
+
+    static {
+      defaultInstance = new StepValidateRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:main.StepValidateRequest)
+  }
+
+  public interface StepValidateResponseOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required bool isValid = 1;
+    /**
+     * <code>required bool isValid = 1;</code>
+     */
+    boolean hasIsValid();
+    /**
+     * <code>required bool isValid = 1;</code>
+     */
+    boolean getIsValid();
+  }
+  /**
+   * Protobuf type {@code main.StepValidateResponse}
+   */
+  public static final class StepValidateResponse extends
+      com.google.protobuf.GeneratedMessage
+      implements StepValidateResponseOrBuilder {
+    // Use StepValidateResponse.newBuilder() to construct.
+    private StepValidateResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private StepValidateResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final StepValidateResponse defaultInstance;
+    public static StepValidateResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public StepValidateResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private StepValidateResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              isValid_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return main.Messages.internal_static_main_StepValidateResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return main.Messages.internal_static_main_StepValidateResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              main.Messages.StepValidateResponse.class, main.Messages.StepValidateResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<StepValidateResponse> PARSER =
+        new com.google.protobuf.AbstractParser<StepValidateResponse>() {
+      public StepValidateResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new StepValidateResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<StepValidateResponse> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required bool isValid = 1;
+    public static final int ISVALID_FIELD_NUMBER = 1;
+    private boolean isValid_;
+    /**
+     * <code>required bool isValid = 1;</code>
+     */
+    public boolean hasIsValid() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required bool isValid = 1;</code>
+     */
+    public boolean getIsValid() {
+      return isValid_;
+    }
+
+    private void initFields() {
+      isValid_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasIsValid()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBool(1, isValid_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, isValid_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static main.Messages.StepValidateResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static main.Messages.StepValidateResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static main.Messages.StepValidateResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static main.Messages.StepValidateResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static main.Messages.StepValidateResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static main.Messages.StepValidateResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static main.Messages.StepValidateResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static main.Messages.StepValidateResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static main.Messages.StepValidateResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static main.Messages.StepValidateResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(main.Messages.StepValidateResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code main.StepValidateResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements main.Messages.StepValidateResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return main.Messages.internal_static_main_StepValidateResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return main.Messages.internal_static_main_StepValidateResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                main.Messages.StepValidateResponse.class, main.Messages.StepValidateResponse.Builder.class);
+      }
+
+      // Construct using main.Messages.StepValidateResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        isValid_ = false;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return main.Messages.internal_static_main_StepValidateResponse_descriptor;
+      }
+
+      public main.Messages.StepValidateResponse getDefaultInstanceForType() {
+        return main.Messages.StepValidateResponse.getDefaultInstance();
+      }
+
+      public main.Messages.StepValidateResponse build() {
+        main.Messages.StepValidateResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public main.Messages.StepValidateResponse buildPartial() {
+        main.Messages.StepValidateResponse result = new main.Messages.StepValidateResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.isValid_ = isValid_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof main.Messages.StepValidateResponse) {
+          return mergeFrom((main.Messages.StepValidateResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(main.Messages.StepValidateResponse other) {
+        if (other == main.Messages.StepValidateResponse.getDefaultInstance()) return this;
+        if (other.hasIsValid()) {
+          setIsValid(other.getIsValid());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasIsValid()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        main.Messages.StepValidateResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (main.Messages.StepValidateResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required bool isValid = 1;
+      private boolean isValid_ ;
+      /**
+       * <code>required bool isValid = 1;</code>
+       */
+      public boolean hasIsValid() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required bool isValid = 1;</code>
+       */
+      public boolean getIsValid() {
+        return isValid_;
+      }
+      /**
+       * <code>required bool isValid = 1;</code>
+       */
+      public Builder setIsValid(boolean value) {
+        bitField0_ |= 0x00000001;
+        isValid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool isValid = 1;</code>
+       */
+      public Builder clearIsValid() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        isValid_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:main.StepValidateResponse)
+    }
+
+    static {
+      defaultInstance = new StepValidateResponse(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:main.StepValidateResponse)
+  }
+
   public interface ExecutionEndingRequestOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
   }
@@ -2522,6 +3405,34 @@ public final class Messages {
      * <code>optional .main.ExecutionEndingRequest executionEndingRequest = 6;</code>
      */
     main.Messages.ExecutionEndingRequestOrBuilder getExecutionEndingRequestOrBuilder();
+
+    // optional .main.StepValidateRequest stepValidateRequest = 7;
+    /**
+     * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+     */
+    boolean hasStepValidateRequest();
+    /**
+     * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+     */
+    main.Messages.StepValidateRequest getStepValidateRequest();
+    /**
+     * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+     */
+    main.Messages.StepValidateRequestOrBuilder getStepValidateRequestOrBuilder();
+
+    // optional .main.StepValidateResponse stepValidateResponse = 8;
+    /**
+     * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+     */
+    boolean hasStepValidateResponse();
+    /**
+     * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+     */
+    main.Messages.StepValidateResponse getStepValidateResponse();
+    /**
+     * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+     */
+    main.Messages.StepValidateResponseOrBuilder getStepValidateResponseOrBuilder();
   }
   /**
    * Protobuf type {@code main.Message}
@@ -2647,6 +3558,32 @@ public final class Messages {
               bitField0_ |= 0x00000020;
               break;
             }
+            case 58: {
+              main.Messages.StepValidateRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                subBuilder = stepValidateRequest_.toBuilder();
+              }
+              stepValidateRequest_ = input.readMessage(main.Messages.StepValidateRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(stepValidateRequest_);
+                stepValidateRequest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
+              break;
+            }
+            case 66: {
+              main.Messages.StepValidateResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                subBuilder = stepValidateResponse_.toBuilder();
+              }
+              stepValidateResponse_ = input.readMessage(main.Messages.StepValidateResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(stepValidateResponse_);
+                stepValidateResponse_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000080;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2707,6 +3644,14 @@ public final class Messages {
        * <code>ExecutionEnding = 3;</code>
        */
       ExecutionEnding(3, 3),
+      /**
+       * <code>StepValidateRequest = 4;</code>
+       */
+      StepValidateRequest(4, 4),
+      /**
+       * <code>StepValidateResponse = 5;</code>
+       */
+      StepValidateResponse(5, 5),
       ;
 
       /**
@@ -2725,6 +3670,14 @@ public final class Messages {
        * <code>ExecutionEnding = 3;</code>
        */
       public static final int ExecutionEnding_VALUE = 3;
+      /**
+       * <code>StepValidateRequest = 4;</code>
+       */
+      public static final int StepValidateRequest_VALUE = 4;
+      /**
+       * <code>StepValidateResponse = 5;</code>
+       */
+      public static final int StepValidateResponse_VALUE = 5;
 
 
       public final int getNumber() { return value; }
@@ -2735,6 +3688,8 @@ public final class Messages {
           case 1: return ExecuteStep;
           case 2: return ExecuteStepResponse;
           case 3: return ExecutionEnding;
+          case 4: return StepValidateRequest;
+          case 5: return StepValidateResponse;
           default: return null;
         }
       }
@@ -2929,6 +3884,50 @@ public final class Messages {
       return executionEndingRequest_;
     }
 
+    // optional .main.StepValidateRequest stepValidateRequest = 7;
+    public static final int STEPVALIDATEREQUEST_FIELD_NUMBER = 7;
+    private main.Messages.StepValidateRequest stepValidateRequest_;
+    /**
+     * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+     */
+    public boolean hasStepValidateRequest() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+     */
+    public main.Messages.StepValidateRequest getStepValidateRequest() {
+      return stepValidateRequest_;
+    }
+    /**
+     * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+     */
+    public main.Messages.StepValidateRequestOrBuilder getStepValidateRequestOrBuilder() {
+      return stepValidateRequest_;
+    }
+
+    // optional .main.StepValidateResponse stepValidateResponse = 8;
+    public static final int STEPVALIDATERESPONSE_FIELD_NUMBER = 8;
+    private main.Messages.StepValidateResponse stepValidateResponse_;
+    /**
+     * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+     */
+    public boolean hasStepValidateResponse() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+     */
+    public main.Messages.StepValidateResponse getStepValidateResponse() {
+      return stepValidateResponse_;
+    }
+    /**
+     * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+     */
+    public main.Messages.StepValidateResponseOrBuilder getStepValidateResponseOrBuilder() {
+      return stepValidateResponse_;
+    }
+
     private void initFields() {
       messageType_ = main.Messages.Message.MessageType.ExecutionStarting;
       messageId_ = 0L;
@@ -2936,6 +3935,8 @@ public final class Messages {
       executeStepRequest_ = main.Messages.ExecuteStepRequest.getDefaultInstance();
       executeStepResponse_ = main.Messages.ExecuteStepResponse.getDefaultInstance();
       executionEndingRequest_ = main.Messages.ExecutionEndingRequest.getDefaultInstance();
+      stepValidateRequest_ = main.Messages.StepValidateRequest.getDefaultInstance();
+      stepValidateResponse_ = main.Messages.StepValidateResponse.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2968,6 +3969,18 @@ public final class Messages {
           return false;
         }
       }
+      if (hasStepValidateRequest()) {
+        if (!getStepValidateRequest().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasStepValidateResponse()) {
+        if (!getStepValidateResponse().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2992,6 +4005,12 @@ public final class Messages {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(6, executionEndingRequest_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeMessage(7, stepValidateRequest_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeMessage(8, stepValidateResponse_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3025,6 +4044,14 @@ public final class Messages {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, executionEndingRequest_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, stepValidateRequest_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, stepValidateResponse_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3143,6 +4170,8 @@ public final class Messages {
           getExecuteStepRequestFieldBuilder();
           getExecuteStepResponseFieldBuilder();
           getExecutionEndingRequestFieldBuilder();
+          getStepValidateRequestFieldBuilder();
+          getStepValidateResponseFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3179,6 +4208,18 @@ public final class Messages {
           executionEndingRequestBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000020);
+        if (stepValidateRequestBuilder_ == null) {
+          stepValidateRequest_ = main.Messages.StepValidateRequest.getDefaultInstance();
+        } else {
+          stepValidateRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (stepValidateResponseBuilder_ == null) {
+          stepValidateResponse_ = main.Messages.StepValidateResponse.getDefaultInstance();
+        } else {
+          stepValidateResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -3247,6 +4288,22 @@ public final class Messages {
         } else {
           result.executionEndingRequest_ = executionEndingRequestBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        if (stepValidateRequestBuilder_ == null) {
+          result.stepValidateRequest_ = stepValidateRequest_;
+        } else {
+          result.stepValidateRequest_ = stepValidateRequestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        if (stepValidateResponseBuilder_ == null) {
+          result.stepValidateResponse_ = stepValidateResponse_;
+        } else {
+          result.stepValidateResponse_ = stepValidateResponseBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3281,6 +4338,12 @@ public final class Messages {
         if (other.hasExecutionEndingRequest()) {
           mergeExecutionEndingRequest(other.getExecutionEndingRequest());
         }
+        if (other.hasStepValidateRequest()) {
+          mergeStepValidateRequest(other.getStepValidateRequest());
+        }
+        if (other.hasStepValidateResponse()) {
+          mergeStepValidateResponse(other.getStepValidateResponse());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -3308,6 +4371,18 @@ public final class Messages {
         }
         if (hasExecuteStepResponse()) {
           if (!getExecuteStepResponse().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasStepValidateRequest()) {
+          if (!getStepValidateRequest().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasStepValidateResponse()) {
+          if (!getStepValidateResponse().isInitialized()) {
             
             return false;
           }
@@ -3927,6 +5002,240 @@ public final class Messages {
         return executionEndingRequestBuilder_;
       }
 
+      // optional .main.StepValidateRequest stepValidateRequest = 7;
+      private main.Messages.StepValidateRequest stepValidateRequest_ = main.Messages.StepValidateRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          main.Messages.StepValidateRequest, main.Messages.StepValidateRequest.Builder, main.Messages.StepValidateRequestOrBuilder> stepValidateRequestBuilder_;
+      /**
+       * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+       */
+      public boolean hasStepValidateRequest() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+       */
+      public main.Messages.StepValidateRequest getStepValidateRequest() {
+        if (stepValidateRequestBuilder_ == null) {
+          return stepValidateRequest_;
+        } else {
+          return stepValidateRequestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+       */
+      public Builder setStepValidateRequest(main.Messages.StepValidateRequest value) {
+        if (stepValidateRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          stepValidateRequest_ = value;
+          onChanged();
+        } else {
+          stepValidateRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+       */
+      public Builder setStepValidateRequest(
+          main.Messages.StepValidateRequest.Builder builderForValue) {
+        if (stepValidateRequestBuilder_ == null) {
+          stepValidateRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          stepValidateRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+       */
+      public Builder mergeStepValidateRequest(main.Messages.StepValidateRequest value) {
+        if (stepValidateRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
+              stepValidateRequest_ != main.Messages.StepValidateRequest.getDefaultInstance()) {
+            stepValidateRequest_ =
+              main.Messages.StepValidateRequest.newBuilder(stepValidateRequest_).mergeFrom(value).buildPartial();
+          } else {
+            stepValidateRequest_ = value;
+          }
+          onChanged();
+        } else {
+          stepValidateRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+       */
+      public Builder clearStepValidateRequest() {
+        if (stepValidateRequestBuilder_ == null) {
+          stepValidateRequest_ = main.Messages.StepValidateRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          stepValidateRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+      /**
+       * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+       */
+      public main.Messages.StepValidateRequest.Builder getStepValidateRequestBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return getStepValidateRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+       */
+      public main.Messages.StepValidateRequestOrBuilder getStepValidateRequestOrBuilder() {
+        if (stepValidateRequestBuilder_ != null) {
+          return stepValidateRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return stepValidateRequest_;
+        }
+      }
+      /**
+       * <code>optional .main.StepValidateRequest stepValidateRequest = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          main.Messages.StepValidateRequest, main.Messages.StepValidateRequest.Builder, main.Messages.StepValidateRequestOrBuilder> 
+          getStepValidateRequestFieldBuilder() {
+        if (stepValidateRequestBuilder_ == null) {
+          stepValidateRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              main.Messages.StepValidateRequest, main.Messages.StepValidateRequest.Builder, main.Messages.StepValidateRequestOrBuilder>(
+                  stepValidateRequest_,
+                  getParentForChildren(),
+                  isClean());
+          stepValidateRequest_ = null;
+        }
+        return stepValidateRequestBuilder_;
+      }
+
+      // optional .main.StepValidateResponse stepValidateResponse = 8;
+      private main.Messages.StepValidateResponse stepValidateResponse_ = main.Messages.StepValidateResponse.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          main.Messages.StepValidateResponse, main.Messages.StepValidateResponse.Builder, main.Messages.StepValidateResponseOrBuilder> stepValidateResponseBuilder_;
+      /**
+       * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+       */
+      public boolean hasStepValidateResponse() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+       */
+      public main.Messages.StepValidateResponse getStepValidateResponse() {
+        if (stepValidateResponseBuilder_ == null) {
+          return stepValidateResponse_;
+        } else {
+          return stepValidateResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+       */
+      public Builder setStepValidateResponse(main.Messages.StepValidateResponse value) {
+        if (stepValidateResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          stepValidateResponse_ = value;
+          onChanged();
+        } else {
+          stepValidateResponseBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+       */
+      public Builder setStepValidateResponse(
+          main.Messages.StepValidateResponse.Builder builderForValue) {
+        if (stepValidateResponseBuilder_ == null) {
+          stepValidateResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          stepValidateResponseBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+       */
+      public Builder mergeStepValidateResponse(main.Messages.StepValidateResponse value) {
+        if (stepValidateResponseBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+              stepValidateResponse_ != main.Messages.StepValidateResponse.getDefaultInstance()) {
+            stepValidateResponse_ =
+              main.Messages.StepValidateResponse.newBuilder(stepValidateResponse_).mergeFrom(value).buildPartial();
+          } else {
+            stepValidateResponse_ = value;
+          }
+          onChanged();
+        } else {
+          stepValidateResponseBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+       */
+      public Builder clearStepValidateResponse() {
+        if (stepValidateResponseBuilder_ == null) {
+          stepValidateResponse_ = main.Messages.StepValidateResponse.getDefaultInstance();
+          onChanged();
+        } else {
+          stepValidateResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+       */
+      public main.Messages.StepValidateResponse.Builder getStepValidateResponseBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getStepValidateResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+       */
+      public main.Messages.StepValidateResponseOrBuilder getStepValidateResponseOrBuilder() {
+        if (stepValidateResponseBuilder_ != null) {
+          return stepValidateResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return stepValidateResponse_;
+        }
+      }
+      /**
+       * <code>optional .main.StepValidateResponse stepValidateResponse = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          main.Messages.StepValidateResponse, main.Messages.StepValidateResponse.Builder, main.Messages.StepValidateResponseOrBuilder> 
+          getStepValidateResponseFieldBuilder() {
+        if (stepValidateResponseBuilder_ == null) {
+          stepValidateResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              main.Messages.StepValidateResponse, main.Messages.StepValidateResponse.Builder, main.Messages.StepValidateResponseOrBuilder>(
+                  stepValidateResponse_,
+                  getParentForChildren(),
+                  isClean());
+          stepValidateResponse_ = null;
+        }
+        return stepValidateResponseBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:main.Message)
     }
 
@@ -3954,6 +5263,16 @@ public final class Messages {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_main_ExecuteStepResponse_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_main_StepValidateRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_main_StepValidateRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_main_StepValidateResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_main_StepValidateResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_main_ExecutionEndingRequest_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -3978,19 +5297,25 @@ public final class Messages {
       "arioFailing\030\002 \001(\010\022\014\n\004args\030\003 \003(\t\"}\n\023Execu" +
       "teStepResponse\022\016\n\006passed\030\002 \002(\010\022\030\n\020recove" +
       "rableError\030\003 \001(\010\022\024\n\014errorMessage\030\004 \001(\t\022\022" +
-      "\n\nstackTrace\030\005 \001(\t\022\022\n\nscreenShot\030\006 \001(\014\"\030" +
-      "\n\026ExecutionEndingRequest\"\237\003\n\007Message\022.\n\013" +
-      "messageType\030\001 \002(\0162\031.main.Message.Message" +
-      "Type\022\021\n\tmessageId\030\002 \002(\003\022@\n\030executionStar",
-      "tingRequest\030\003 \001(\0132\036.main.ExecutionStarti" +
-      "ngRequest\0224\n\022executeStepRequest\030\004 \001(\0132\030." +
-      "main.ExecuteStepRequest\0226\n\023executeStepRe" +
-      "sponse\030\005 \001(\0132\031.main.ExecuteStepResponse\022" +
-      "<\n\026executionEndingRequest\030\006 \001(\0132\034.main.E" +
-      "xecutionEndingRequest\"c\n\013MessageType\022\025\n\021" +
-      "ExecutionStarting\020\000\022\017\n\013ExecuteStep\020\001\022\027\n\023" +
-      "ExecuteStepResponse\020\002\022\023\n\017ExecutionEnding" +
-      "\020\003"
+      "\n\nstackTrace\030\005 \001(\t\022\022\n\nscreenShot\030\006 \001(\014\"\'" +
+      "\n\023StepValidateRequest\022\020\n\010stepText\030\001 \002(\t\"" +
+      "\'\n\024StepValidateResponse\022\017\n\007isValid\030\001 \002(\010" +
+      "\"\030\n\026ExecutionEndingRequest\"\305\004\n\007Message\022.",
+      "\n\013messageType\030\001 \002(\0162\031.main.Message.Messa" +
+      "geType\022\021\n\tmessageId\030\002 \002(\003\022@\n\030executionSt" +
+      "artingRequest\030\003 \001(\0132\036.main.ExecutionStar" +
+      "tingRequest\0224\n\022executeStepRequest\030\004 \001(\0132" +
+      "\030.main.ExecuteStepRequest\0226\n\023executeStep" +
+      "Response\030\005 \001(\0132\031.main.ExecuteStepRespons" +
+      "e\022<\n\026executionEndingRequest\030\006 \001(\0132\034.main" +
+      ".ExecutionEndingRequest\0226\n\023stepValidateR" +
+      "equest\030\007 \001(\0132\031.main.StepValidateRequest\022" +
+      "8\n\024stepValidateResponse\030\010 \001(\0132\032.main.Ste",
+      "pValidateResponse\"\226\001\n\013MessageType\022\025\n\021Exe" +
+      "cutionStarting\020\000\022\017\n\013ExecuteStep\020\001\022\027\n\023Exe" +
+      "cuteStepResponse\020\002\022\023\n\017ExecutionEnding\020\003\022" +
+      "\027\n\023StepValidateRequest\020\004\022\030\n\024StepValidate" +
+      "Response\020\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4015,18 +5340,30 @@ public final class Messages {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_main_ExecuteStepResponse_descriptor,
               new java.lang.String[] { "Passed", "RecoverableError", "ErrorMessage", "StackTrace", "ScreenShot", });
-          internal_static_main_ExecutionEndingRequest_descriptor =
+          internal_static_main_StepValidateRequest_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_main_StepValidateRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_main_StepValidateRequest_descriptor,
+              new java.lang.String[] { "StepText", });
+          internal_static_main_StepValidateResponse_descriptor =
+            getDescriptor().getMessageTypes().get(4);
+          internal_static_main_StepValidateResponse_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_main_StepValidateResponse_descriptor,
+              new java.lang.String[] { "IsValid", });
+          internal_static_main_ExecutionEndingRequest_descriptor =
+            getDescriptor().getMessageTypes().get(5);
           internal_static_main_ExecutionEndingRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_main_ExecutionEndingRequest_descriptor,
               new java.lang.String[] { });
           internal_static_main_Message_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_main_Message_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_main_Message_descriptor,
-              new java.lang.String[] { "MessageType", "MessageId", "ExecutionStartingRequest", "ExecuteStepRequest", "ExecuteStepResponse", "ExecutionEndingRequest", });
+              new java.lang.String[] { "MessageType", "MessageId", "ExecutionStartingRequest", "ExecuteStepRequest", "ExecuteStepResponse", "ExecutionEndingRequest", "StepValidateRequest", "StepValidateResponse", });
           return null;
         }
       };

@@ -18,6 +18,14 @@ message ExecuteStepResponse {
 	optional bytes screenShot = 6;
 }
 
+message StepValidateRequest {
+	required string stepText = 1;
+}
+
+message StepValidateResponse {
+	required bool isValid = 1;
+}
+
 message ExecutionEndingRequest {
 }
 
@@ -29,6 +37,8 @@ message Message {
 	    ExecuteStep = 1;
 	    ExecuteStepResponse = 2;
 	    ExecutionEnding = 3;
+	    StepValidateRequest = 4;
+	    StepValidateResponse = 5;
 	}
   	
   	required MessageType messageType = 1;
@@ -42,5 +52,7 @@ message Message {
   	optional ExecuteStepRequest executeStepRequest = 4;
   	optional ExecuteStepResponse executeStepResponse = 5;
   	optional ExecutionEndingRequest executionEndingRequest = 6;
+  	optional StepValidateRequest stepValidateRequest = 7;
+  	optional StepValidateResponse stepValidateResponse = 8;
 }
 

@@ -59,6 +59,22 @@ func (e *execution) startStepExecution(token *token) (bool, error) {
 	return true, nil
 }
 
+func (e *execution) validateStep(token *token) (bool, error) {
+	message := &Message{MessageType: Message_StepValidateRequest.Enum(),
+		StepValidateRequest: &StepValidateRequest{StepText: proto.String(token.value)}}
+	response, err := getResponse(e.connection, message)
+	if err != nil {
+		return false, err
+	}
+
+	if response.GetMessageType() == Message_StepValidateResponse {
+		validateResponse := response.GetStepValidateResponse()
+		return validateResponse.GetIsValid(), nil
+	} else {
+		panic("Expected a validate step response")
+	}
+}
+
 func (e *execution) stopScenarioExecution() error {
 	message := &Message{MessageType: Message_ExecutionEnding.Enum(),
 		ExecutionEndingRequest: &ExecutionEndingRequest{}}
@@ -81,9 +97,16 @@ func (e *execution) start() error {
 			err = e.startScenarioExecution()
 			break
 		case typeWorkflowStep:
-			passed, err := e.startStepExecution(token)
-			quit = !passed
-			err = err
+			valid, err := e.validateStep(token)
+			if !valid {
+				fmt.Printf("Error. Unimplemented step: %s\n", token.line)
+				quit = true
+				err = err
+			} else {
+				passed, err := e.startStepExecution(token)
+				quit = !passed
+				err = err
+			}
 			break
 		}
 

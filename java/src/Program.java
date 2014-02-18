@@ -16,9 +16,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import static main.Messages.Message.MessageType;
-import static main.Messages.Message.MessageType.ExecuteStep;
-import static main.Messages.Message.MessageType.ExecutionEnding;
-import static main.Messages.Message.MessageType.ExecutionStarting;
+import static main.Messages.Message.MessageType.*;
 
 public class Program {
 
@@ -101,6 +99,7 @@ public class Program {
             put(ExecutionStarting, new ScenarioExecutionStartingProcessor());
             put(ExecuteStep, new ExecuteStepProcessor());
             put(ExecutionEnding, new ExecutionEndingProcessor());
+            put(StepValidateRequest, new ValidateStepProcessor());
         }};
 
         scanForStepImplementations();

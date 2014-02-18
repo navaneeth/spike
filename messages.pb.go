@@ -12,6 +12,8 @@ It has these top-level messages:
 	ExecutionStartingRequest
 	ExecuteStepRequest
 	ExecuteStepResponse
+	StepValidateRequest
+	StepValidateResponse
 	ExecutionEndingRequest
 	Message
 */
@@ -29,10 +31,12 @@ var _ = math.Inf
 type Message_MessageType int32
 
 const (
-	Message_ExecutionStarting   Message_MessageType = 0
-	Message_ExecuteStep         Message_MessageType = 1
-	Message_ExecuteStepResponse Message_MessageType = 2
-	Message_ExecutionEnding     Message_MessageType = 3
+	Message_ExecutionStarting    Message_MessageType = 0
+	Message_ExecuteStep          Message_MessageType = 1
+	Message_ExecuteStepResponse  Message_MessageType = 2
+	Message_ExecutionEnding      Message_MessageType = 3
+	Message_StepValidateRequest  Message_MessageType = 4
+	Message_StepValidateResponse Message_MessageType = 5
 )
 
 var Message_MessageType_name = map[int32]string{
@@ -40,12 +44,16 @@ var Message_MessageType_name = map[int32]string{
 	1: "ExecuteStep",
 	2: "ExecuteStepResponse",
 	3: "ExecutionEnding",
+	4: "StepValidateRequest",
+	5: "StepValidateResponse",
 }
 var Message_MessageType_value = map[string]int32{
-	"ExecutionStarting":   0,
-	"ExecuteStep":         1,
-	"ExecuteStepResponse": 2,
-	"ExecutionEnding":     3,
+	"ExecutionStarting":    0,
+	"ExecuteStep":          1,
+	"ExecuteStepResponse":  2,
+	"ExecutionEnding":      3,
+	"StepValidateRequest":  4,
+	"StepValidateResponse": 5,
 }
 
 func (x Message_MessageType) Enum() *Message_MessageType {
@@ -161,6 +169,38 @@ func (m *ExecuteStepResponse) GetScreenShot() []byte {
 	return nil
 }
 
+type StepValidateRequest struct {
+	StepText         *string `protobuf:"bytes,1,req,name=stepText" json:"stepText,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *StepValidateRequest) Reset()         { *m = StepValidateRequest{} }
+func (m *StepValidateRequest) String() string { return proto.CompactTextString(m) }
+func (*StepValidateRequest) ProtoMessage()    {}
+
+func (m *StepValidateRequest) GetStepText() string {
+	if m != nil && m.StepText != nil {
+		return *m.StepText
+	}
+	return ""
+}
+
+type StepValidateResponse struct {
+	IsValid          *bool  `protobuf:"varint,1,req,name=isValid" json:"isValid,omitempty"`
+	XXX_unrecognized []byte `json:"-"`
+}
+
+func (m *StepValidateResponse) Reset()         { *m = StepValidateResponse{} }
+func (m *StepValidateResponse) String() string { return proto.CompactTextString(m) }
+func (*StepValidateResponse) ProtoMessage()    {}
+
+func (m *StepValidateResponse) GetIsValid() bool {
+	if m != nil && m.IsValid != nil {
+		return *m.IsValid
+	}
+	return false
+}
+
 type ExecutionEndingRequest struct {
 	XXX_unrecognized []byte `json:"-"`
 }
@@ -181,6 +221,8 @@ type Message struct {
 	ExecuteStepRequest       *ExecuteStepRequest       `protobuf:"bytes,4,opt,name=executeStepRequest" json:"executeStepRequest,omitempty"`
 	ExecuteStepResponse      *ExecuteStepResponse      `protobuf:"bytes,5,opt,name=executeStepResponse" json:"executeStepResponse,omitempty"`
 	ExecutionEndingRequest   *ExecutionEndingRequest   `protobuf:"bytes,6,opt,name=executionEndingRequest" json:"executionEndingRequest,omitempty"`
+	StepValidateRequest      *StepValidateRequest      `protobuf:"bytes,7,opt,name=stepValidateRequest" json:"stepValidateRequest,omitempty"`
+	StepValidateResponse     *StepValidateResponse     `protobuf:"bytes,8,opt,name=stepValidateResponse" json:"stepValidateResponse,omitempty"`
 	XXX_unrecognized         []byte                    `json:"-"`
 }
 
@@ -226,6 +268,20 @@ func (m *Message) GetExecuteStepResponse() *ExecuteStepResponse {
 func (m *Message) GetExecutionEndingRequest() *ExecutionEndingRequest {
 	if m != nil {
 		return m.ExecutionEndingRequest
+	}
+	return nil
+}
+
+func (m *Message) GetStepValidateRequest() *StepValidateRequest {
+	if m != nil {
+		return m.StepValidateRequest
+	}
+	return nil
+}
+
+func (m *Message) GetStepValidateResponse() *StepValidateResponse {
+	if m != nil {
+		return m.StepValidateResponse
 	}
 	return nil
 }

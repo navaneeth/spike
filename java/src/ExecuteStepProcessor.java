@@ -1,5 +1,4 @@
 import com.google.protobuf.ByteString;
-import main.Messages;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -16,6 +15,20 @@ import static main.Messages.Message.MessageType;
 public class ExecuteStepProcessor implements IMessageProcessor {
 
     private static Map<Method, Object> methodToClassInstanceMap = new HashMap<Method, Object>();
+    private Map<Class<?>, StringToPrimitiveConverter> primitiveConverters = new HashMap<Class<?>, StringToPrimitiveConverter>();
+
+    public ExecuteStepProcessor() {
+        primitiveConverters.put(int.class, new StringToIntegerConverter());
+        primitiveConverters.put(Integer.class, new StringToIntegerConverter());
+        primitiveConverters.put(boolean.class, new StringToBooleanConverter());
+        primitiveConverters.put(Boolean.class, new StringToBooleanConverter());
+        primitiveConverters.put(long.class, new StringToLongConverter());
+        primitiveConverters.put(Long.class, new StringToLongConverter());
+        primitiveConverters.put(float.class, new StringToFloatConverter());
+        primitiveConverters.put(Float.class, new StringToFloatConverter());
+        primitiveConverters.put(double.class, new StringToDoubleConverter());
+        primitiveConverters.put(Double.class, new StringToDoubleConverter());
+    }
 
     @Override
     public Message process(Message message) {
@@ -38,10 +51,14 @@ public class ExecuteStepProcessor implements IMessageProcessor {
                 System.out.println("Screenshot is not available. " + ex.getMessage());
             }
             ExecuteStepResponse.Builder builder = ExecuteStepResponse.newBuilder().setPassed(false);
-            builder.setErrorMessage(e.getCause().toString());
-            if (e.getStackTrace() != null) {
+            if (e.getCause() != null) {
+                builder.setErrorMessage(e.getCause().toString());
                 builder.setStackTrace(formatStackTrace(e.getCause().getStackTrace()));
+            } else {
+                builder.setErrorMessage(e.toString());
+                builder.setStackTrace(formatStackTrace(e.getStackTrace()));
             }
+
             if (imageBytes.size() > 0) {
                 builder.setScreenShot(ByteString.copyFrom(imageBytes.toByteArray()));
             }
@@ -54,6 +71,9 @@ public class ExecuteStepProcessor implements IMessageProcessor {
 
 
     private String formatStackTrace(StackTraceElement[] stackTrace) {
+        if (stackTrace == null)
+            return "";
+
         StringBuffer output = new StringBuffer();
         for (StackTraceElement element : stackTrace) {
             output.append(element.toString());
@@ -71,7 +91,18 @@ public class ExecuteStepProcessor implements IMessageProcessor {
         }
 
         if (args != null && args.size() > 0) {
-            method.invoke(classInstance, args.toArray());
+            Object[] parameters = new Object[args.size()];
+            Class<?>[] parameterTypes = method.getParameterTypes();
+            for (int i = 0; i < parameterTypes.length; i++) {
+                Class<?> parameterType = parameterTypes[i];
+                if (primitiveConverters.containsKey(parameterType)) {
+                    parameters[i] = primitiveConverters.get(parameterType).convert(args.get(i));
+                }
+                else {
+                    parameters[i] = args.get(i);
+                }
+            }
+            method.invoke(classInstance, parameters);
         } else {
             method.invoke(classInstance);
         }

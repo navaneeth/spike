@@ -14,5 +14,25 @@ public class StepImplementation {
             System.out.println(str.toString());
         }
     }
+
+    @Step("enter age {arg0}")
+    public void enterAge(int age) {
+        System.out.println(age);
+    }
+
+    @Step("{arg0} life")
+    public void life(boolean arg) {
+        System.out.println(arg + " life, yeah!!");
+    }
+
+    @Step("{arg0} double value")
+    public void doubleArg(float arg) {
+        System.out.println(arg);
+    }
+
+    @Step("enter {arg0} and {arg1} and {arg2}")
+    public void twoArgs(int age, String name, double weight) {
+        System.out.println("in 3 args");
+    }
 }
 

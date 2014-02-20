@@ -1,15 +1,12 @@
 require 'socket'
 require 'protocol_buffers'
-require_relative 'message-processor'
-require_relative 'messages.pb'
 
+require_relative 'messages.pb'
+require_relative 'executor'
+require_relative 'message-processor'
 
 HOST_NAME = 'localhost'
 PORT = 8888
-
-# msg = Main::Message.new(:messageType => Main::Message::MessageType::ExecutionStarting, :messageId => 1234)
-# puts msg.messageType
-
 
 def dispatch_messages(socket)
 	while (!socket.eof?)
@@ -22,10 +19,11 @@ end
 
 def handle_message(socket, message)
 	if (!MessageProcessor.is_valid_message(message)) 
-		puts "Invalid message received"
+		puts "Invalid message received"	
+	else
+		response = MessageProcessor.process_message message
+		write_message(socket, response)
 	end
-	response = MessageProcessor.process_message message
-	write_message(socket, response)
 end
 	
 def message_length(socket)
@@ -42,10 +40,8 @@ end
 
 
 socket = TCPSocket.open(HOST_NAME, PORT)
+load_steps()
 dispatch_messages(socket)
-
-
-
 
 
 

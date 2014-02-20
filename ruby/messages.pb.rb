@@ -8,6 +8,8 @@ module Main
   class ExecutionStartingRequest < ::ProtocolBuffers::Message; end
   class ExecuteStepRequest < ::ProtocolBuffers::Message; end
   class ExecuteStepResponse < ::ProtocolBuffers::Message; end
+  class StepValidateRequest < ::ProtocolBuffers::Message; end
+  class StepValidateResponse < ::ProtocolBuffers::Message; end
   class ExecutionEndingRequest < ::ProtocolBuffers::Message; end
   class Message < ::ProtocolBuffers::Message; end
 
@@ -35,6 +37,18 @@ module Main
     optional :bytes, :screenShot, 6
   end
 
+  class StepValidateRequest < ::ProtocolBuffers::Message
+    set_fully_qualified_name "main.StepValidateRequest"
+
+    required :string, :stepText, 1
+  end
+
+  class StepValidateResponse < ::ProtocolBuffers::Message
+    set_fully_qualified_name "main.StepValidateResponse"
+
+    required :bool, :isValid, 1
+  end
+
   class ExecutionEndingRequest < ::ProtocolBuffers::Message
     set_fully_qualified_name "main.ExecutionEndingRequest"
 
@@ -53,6 +67,8 @@ module Main
       ExecuteStep = 1
       ExecuteStepResponse = 2
       ExecutionEnding = 3
+      StepValidateRequest = 4
+      StepValidateResponse = 5
     end
 
     set_fully_qualified_name "main.Message"
@@ -63,6 +79,8 @@ module Main
     optional ::Main::ExecuteStepRequest, :executeStepRequest, 4
     optional ::Main::ExecuteStepResponse, :executeStepResponse, 5
     optional ::Main::ExecutionEndingRequest, :executionEndingRequest, 6
+    optional ::Main::StepValidateRequest, :stepValidateRequest, 7
+    optional ::Main::StepValidateResponse, :stepValidateResponse, 8
   end
 
 end

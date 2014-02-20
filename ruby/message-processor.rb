@@ -27,7 +27,9 @@ class ExecuteStepProcessor
 	end
 
 	def handle_step_failure(message, exception)
-		Main::ExecutionStepResponse.new(:passed => false)
+		execution_step_response = Main::ExecuteStepResponse.new(:passed => false, :recoverableError => false, :errorMessage => exception.message, :stackTrace => exception.backtrace.join("\n"))
+		Main::Message.new(:messageType => EXECUTE_STEP_RESPONSE, :messageId => message.messageId, :executeStepResponse => execution_step_response) 
+		
 	end
 end
 

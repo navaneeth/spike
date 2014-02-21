@@ -12,6 +12,7 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
+	"io/ioutil"
 )
 
 const (
@@ -96,19 +97,48 @@ func makeListOfAvailableSteps() {
 
 func startAPIService() {
 	http.HandleFunc("/steps", func(w http.ResponseWriter, r *http.Request) {
-		js, err := json.Marshal(availableSteps)
-		if err != nil {
-			io.WriteString(w, err.Error())
-		} else {
-			w.Header()["Content-Type"] = []string{"application/json"}
-			w.Write(js)
-		}
-	})
+			js, err := json.Marshal(availableSteps)
+			if err != nil {
+				io.WriteString(w, err.Error())
+			} else {
+				w.Header()["Content-Type"] = []string{"application/json"}
+				w.Write(js)
+			}
+		})
 	log.Fatal(http.ListenAndServe(":8889", nil))
+}
+
+func createProjectTemplate(projectName string) {
+	err := os.Mkdir(projectName, 0744)
+	if err != nil {
+		panic(err)
+	}
+
+	for artifact, _ := range _bindata {
+		copyFileToProject(projectName, artifact)
+	}
+}
+
+func copyFileToProject(projectName string, relativePath string) {
+	paths := strings.Split(relativePath, "/")[1:]
+	pathWithFile := strings.Join(paths[:len(paths)], "/")
+	pathWithoutFile := strings.Join(paths[:len(paths)-1], "/")
+	err := os.MkdirAll(projectName+"/"+pathWithoutFile, 0655);
+	if err != nil {
+		panic(err)
+	}
+	fileContent, err := Asset(relativePath)
+
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("copying ", projectName+"/"+pathWithFile)
+	ioutil.WriteFile(projectName+"/"+pathWithFile, fileContent, 0644)
 }
 
 // Command line flags
 var daemonize = flag.Bool("daemonize", false, "Run as a daemon")
+var create = flag.String("create", "", "Create a template")
 
 func printUsage() {
 	fmt.Fprintf(os.Stderr, "usage: twist [options] scenario\n")
@@ -122,6 +152,8 @@ func main() {
 	if *daemonize {
 		makeListOfAvailableSteps()
 		startAPIService()
+	} else if *create != "" {
+		createProjectTemplate(*create)
 	} else {
 		if len(flag.Args()) == 0 {
 			printUsage()

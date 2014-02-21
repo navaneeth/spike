@@ -1,5 +1,6 @@
 require_relative 'messages.pb'
 require_relative 'executor'
+require 'tempfile'
 
 EXECUTION_STARTING_REQUEST=0
 EXECUTE_STEP_REQUEST=1
@@ -27,9 +28,20 @@ class ExecuteStepProcessor
 	end
 
 	def handle_step_failure(message, exception)
-		execution_step_response = Main::ExecuteStepResponse.new(:passed => false, :recoverableError => false, :errorMessage => exception.message, :stackTrace => exception.backtrace.join("\n"))
+		execution_step_response = Main::ExecuteStepResponse.new(:passed => false,
+																:recoverableError => false,
+																:errorMessage => exception.message,
+																:stackTrace => exception.backtrace.join("\n"),
+																:screenShot => screenshot_bytes)
 		Main::Message.new(:messageType => EXECUTE_STEP_RESPONSE, :messageId => message.messageId, :executeStepResponse => execution_step_response) 
-		
+	end
+
+	def screenshot_bytes
+		file = File.open("#{Dir.tmpdir}/screenshot.png", "w+")
+		`screencapture #{file.path}`
+		bytes = file.read
+		File.delete file
+		return bytes	
 	end
 end
 

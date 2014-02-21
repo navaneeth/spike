@@ -40,7 +40,7 @@ end
 
 
 socket = TCPSocket.open(HOST_NAME, PORT)
-load_steps()
+load_steps(['steps_definition'])
 dispatch_messages(socket)
 
 

@@ -32,7 +32,7 @@ func handleConnection(conn net.Conn) {
 		buffer.Write(data[0:n])
 
 		messageLength, bytesRead := proto.DecodeVarint(buffer.Bytes())
-		if messageLength <= uint64(buffer.Len()) {
+		if messageLength > 0 && messageLength < uint64(buffer.Len()) {
 			message := &Message{}
 			err = proto.Unmarshal(buffer.Bytes()[bytesRead:messageLength+uint64(bytesRead)], message)
 			if err != nil {

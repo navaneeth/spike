@@ -1,0 +1,8 @@
+Scenario: Mingle - Project creation test
+
+Workflow:
+Login as "twist" and password "twist123"
+Create new project with name "testing" and description "test project"
+Verify project "testing" exists
+Delete project
+log out the user

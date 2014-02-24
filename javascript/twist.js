@@ -15,11 +15,6 @@ var builder = protoBuf.loadProtoFile("../messages.proto");
 var s = require('net').Socket();
 s.connect(8888, 'localhost');
 
-// function dispatchMessage(message) {
-
-// }
-
-var util = require('util');
 var ByteBuffer = require("bytebuffer");
 var message = builder.build("main.Message");
 

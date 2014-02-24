@@ -11,5 +11,3 @@ twist.step("test step with {arg0} and {arg1}", function(arg0, arg1) {
 	console.log(arg1);
 });
 
-var util = require('util');
-

@@ -111,7 +111,7 @@ func startAPIService() {
 func createProjectTemplate(projectName string) {
 	if exist,_ := exists(projectName); !exist {
 		fmt.Println("Creating directory ", projectName)
-		err := os.Mkdir(projectName, 0744)
+		err := os.Mkdir(projectName, 0766)
 		if err != nil {
 			panic(err)
 		}
@@ -135,7 +135,7 @@ func copyFileToProject(projectName string, relativePath string) {
 	paths := strings.Split(relativePath, "/")[1:]
 	pathWithFile := strings.Join(paths[:len(paths)], "/")
 	pathWithoutFile := strings.Join(paths[:len(paths)-1], "/")
-	err := os.MkdirAll(projectName+"/"+pathWithoutFile, 0755);
+	err := os.MkdirAll(projectName+"/"+pathWithoutFile, 0766);
 	if err != nil {
 		panic(err)
 	}

@@ -39,9 +39,9 @@ class ExecuteStepProcessor
 	def screenshot_bytes
 		file = File.open("#{Dir.tmpdir}/screenshot.png", "w+")
 		`screencapture #{file.path}`
-		bytes = file.read
+		file_content = file.read
 		File.delete file
-		return bytes	
+		return file_content	
 	end
 end
 

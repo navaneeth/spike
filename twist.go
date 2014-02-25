@@ -50,7 +50,7 @@ func getProjectManifest() *manifest {
 	return &m
 }
 
-func findScenarioFiles(fileChan chan<- string) {
+func findScenarioFiles(fileChan chan <- string) {
 	pwd, err := os.Getwd()
 	if err != nil {
 		panic(err)
@@ -109,21 +109,33 @@ func startAPIService() {
 }
 
 func createProjectTemplate(projectName string) {
-	err := os.Mkdir(projectName, 0744)
-	if err != nil {
-		panic(err)
+	if exist,_ := exists(projectName); !exist {
+		fmt.Println("Creating directory ", projectName)
+		err := os.Mkdir(projectName, 0744)
+		if err != nil {
+			panic(err)
+		}
 	}
 
+	fmt.Println("Copying artifacts")
 	for artifact, _ := range _bindata {
 		copyFileToProject(projectName, artifact)
 	}
+	fmt.Println("Copying complete")
+}
+
+func exists(path string) (bool, error) {
+	_, err := os.Stat(path)
+	if err == nil { return true, nil }
+	if os.IsNotExist(err) { return false, nil }
+	return false, err
 }
 
 func copyFileToProject(projectName string, relativePath string) {
 	paths := strings.Split(relativePath, "/")[1:]
 	pathWithFile := strings.Join(paths[:len(paths)], "/")
 	pathWithoutFile := strings.Join(paths[:len(paths)-1], "/")
-	err := os.MkdirAll(projectName+"/"+pathWithoutFile, 0655);
+	err := os.MkdirAll(projectName+"/"+pathWithoutFile, 0755);
 	if err != nil {
 		panic(err)
 	}
@@ -133,12 +145,13 @@ func copyFileToProject(projectName string, relativePath string) {
 		panic(err)
 	}
 	fmt.Println("copying ", projectName+"/"+pathWithFile)
-	ioutil.WriteFile(projectName+"/"+pathWithFile, fileContent, 0644)
+	ioutil.WriteFile(projectName+"/"+pathWithFile, fileContent, 0766)
 }
 
 // Command line flags
 var daemonize = flag.Bool("daemonize", false, "Run as a daemon")
 var create = flag.String("create", "", "Create a template")
+var wd = flag.String("wd", "", "the working directory from which the executable has to run")
 
 func printUsage() {
 	fmt.Fprintf(os.Stderr, "usage: twist [options] scenario\n")
@@ -148,6 +161,11 @@ func printUsage() {
 
 func main() {
 	flag.Parse()
+	if *wd != "" {
+		os.Chdir(*wd)
+		value, _ := os.Getwd()
+		fmt.Println("Current working dir", value)
+	}
 
 	if *daemonize {
 		makeListOfAvailableSteps()

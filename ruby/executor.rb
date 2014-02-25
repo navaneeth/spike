@@ -6,8 +6,8 @@ def step(text,&block)
 	$steps_map[text] = block;
 end
 
-def load_steps steps_location
- 	steps_location.each {|x| require_relative x}
+def load_steps steps_implementation_dir
+ 	Dir["#{steps_implementation_dir}/**/*.rb"].each {|x| require x}
 end
 
 def is_valid_step(step)

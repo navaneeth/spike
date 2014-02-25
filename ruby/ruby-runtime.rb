@@ -7,6 +7,7 @@ require_relative 'message-processor'
 
 HOST_NAME = 'localhost'
 PORT = 8888
+DEFAULT_IMPLEMENTATIONS_DIR_PATH = "#{Dir.pwd}/ruby/steps_implementation"
 
 def dispatch_messages(socket)
 	while (!socket.eof?)
@@ -38,10 +39,7 @@ def write_message(socket, message)
 end
 
 
-
 socket = TCPSocket.open(HOST_NAME, PORT)
-load_steps(['steps_definition'])
+load_steps(DEFAULT_IMPLEMENTATIONS_DIR_PATH)
 dispatch_messages(socket)
-
-
 

@@ -1,6 +1,5 @@
 require "selenium-webdriver"
-require "test/unit"
-include Test::Unit::Assertions
+
 
 $browser = Selenium::WebDriver.for :firefox
 
@@ -21,7 +20,9 @@ end
 
 step "Verify project {arg0} exists" do |project_name|
 	$browser.find_element(:link, "All projects").click
-	assert($browser.find_element(:link, project_name).displayed?)
+	if ($browser.find_element(:link, project_name).displayed? == false)
+		raise 'Project #{project_name} not displayed'
+	end
 end
 
 step "Delete project" do

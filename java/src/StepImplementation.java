@@ -36,10 +36,11 @@ public class StepImplementation {
         browser.findElement(By.linkText("Delete this")).click();
         browser.findElement(By.linkText("CONTINUE TO DELETE")).click();
     }
-    @Step("log out user")
+
+    @Step("log out the user")
     public void logoutUser() {
         browser.findElement(By.linkText("Sign out")).click();
-        browser.close();
+        browser.quit();
     }
 
 

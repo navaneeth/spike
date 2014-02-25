@@ -14,7 +14,7 @@ import static main.Messages.Message.MessageType;
 
 public class ExecuteStepProcessor implements IMessageProcessor {
 
-    private static Map<Method, Object> methodToClassInstanceMap = new HashMap<Method, Object>();
+    private static Map<Class<?>, Object> methodToClassInstanceMap = new HashMap<Class<?>, Object>();
     private Map<Class<?>, StringToPrimitiveConverter> primitiveConverters = new HashMap<Class<?>, StringToPrimitiveConverter>();
 
     public ExecuteStepProcessor() {
@@ -84,10 +84,10 @@ public class ExecuteStepProcessor implements IMessageProcessor {
 
     private void execute(String stepText, List<String> args) throws Exception {
         Method method = StepRegistry.get(stepText);
-        Object classInstance = methodToClassInstanceMap.get(method);
+        Object classInstance = methodToClassInstanceMap.get(method.getDeclaringClass());
         if (classInstance == null) {
             classInstance = Class.forName(method.getDeclaringClass().getName()).newInstance();
-            methodToClassInstanceMap.put(method, classInstance);
+            methodToClassInstanceMap.put(method.getDeclaringClass(), classInstance);
         }
 
         if (args != null && args.size() > 0) {

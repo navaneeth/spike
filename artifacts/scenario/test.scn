@@ -1,5 +1,0 @@
-Scenario: Login scenario
-Workflow:
-enter username "foo"
-enter password "bar"
-verify success message comes up
